@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allen Ralford Barkley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --silver: #F5F5F5;
+      --silver-dark: #AAAAAA;
+      --black: #000000;
+      --blue-darkest: #071B57;
+      --blue-darker: #0A2169;
+      --blue-dark: #0E2A86;
+      --blue-medium: #1434A3;
+      --azure-dark: #0D20F3;
+      --azure: #200CF2;
+      --azure-light: #2C6EC7;
+      --azure-lighter: #3E7CC8;
+      --azure-lightest: #94C9DE;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--blue-darkest);
+      color: var(--white);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Navigation */
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .btn-blue {
+      background-color: var(--azure);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    /* Submenu */
+    .submenu {
+      padding: 12px 0;
+    }
+    
+    .submenu-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    
+    .submenu-link {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .dot {
+      width: 4px;
+      height: 4px;
+      background-color: var(--white);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .submenu-link:hover .dot {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <!-- Top Black Header -->
+    <div style="background-color: black; padding: 12px 0;">
+      <div class="container navbar-container">
+        <a href="#" class="logo"><img src="assets/logo.jpg" alt="Allen Ralford Barkley Logo" style="height: 40px; margin-right: 10px;"> Allen Ralford Barkley</a>
+        <div class="nav-links">
+          <a href="#" class="nav-link">Home</a>
+          <a href="#" class="nav-link">About</a>
+          <a href="#" class="nav-link">Courses</a>
+          <a href="#" class="nav-link">Products</a>
+          <a href="#" class="nav-link">Consulting</a>
+          <a href="#" class="btn-blue">Book Discovery Call</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Submenu with Blue Gradient Background -->
+    <div class="submenu" style="background: linear-gradient(to right, var(--blue-medium), var(--azure), var(--azure-light));">
+      <div class="container">
+        <div class="submenu-links">
+          <a href="#" class="submenu-link">
+            <span style="color: white; font-weight: 500;">Industries</span>
+            <div class="dot"></div>
+          </a>
+          <a href="#" class="submenu-link">
+            <span style="color: white; font-weight: 500;">Solutions</span>
+            <div class="dot"></div>
+          </a>
+          <a href="#" class="submenu-link">
+            <span style="color: white; font-weight: 500;">Services</span>
+            <div class="dot"></div>
+          </a>
+          <a href="#" class="submenu-link">
+            <span style="color: white; font-weight: 500;">Premium Services</span>
+            <div class="dot"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section style="height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div style="text-align: center;">
+      <h1 style="color: white; font-size: 3rem; margin-bottom: 20px;">Allen Ralford Barkley</h1>
+      <p style="color: white; font-size: 1.5rem; margin-bottom: 40px;">Updated Navigation Menu</p>
+      <div>
+        <p style="color: white; font-size: 1.2rem; margin-bottom: 10px;">u2713 Replaced Gallery with Industries</p>
+        <p style="color: white; font-size: 1.2rem; margin-bottom: 10px;">u2713 Replaced Models with Solutions</p>
+        <p style="color: white; font-size: 1.2rem; margin-bottom: 10px;">u2713 Replaced Build with Services</p>
+        <p style="color: white; font-size: 1.2rem; margin-bottom: 10px;">u2713 Kept Premium Services</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

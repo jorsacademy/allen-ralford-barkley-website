@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allen Ralford Barkley - Tabbed Hero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-darkest: #071B57;
+      --blue-dark: #0A1A8F;
+      --blue: #1E3A8A;
+      --azure: #3B82F6;
+      --navy-dark: #0F172A;
+      --navy: #1E293B;
+      --navy-light: #334155;
+      --silver-dark: #64748B;
+      --silver: #94A3B8;
+      --silver-light: #CBD5E1;
+      --white: #F8FAFC;
+      --gold: #F59E0B;
+      --black: #020617;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    body {
+      background-color: var(--black);
+      color: var(--white);
+    }
+    
+    .animate-fade-in {
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+    
+    .animate-slide-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.8s ease forwards;
+    }
+    
+    .animate-bounce {
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Sections with Tab Navigation -->
+  <div class="hero-tabs" style="position: relative;">
+    <!-- Tab Navigation -->
+    <div style="position: absolute; top: 20px; right: 20px; z-index: 100; display: flex; gap: 10px;">
+      <button onclick="showHero(0)" class="hero-tab active" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: all 0.3s ease;">Home</button>
+      <button onclick="showHero(1)" class="hero-tab" style="background: rgba(255,255,255,0.1); border: none; color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: all 0.3s ease;">Solutions</button>
+      <button onclick="showHero(2)" class="hero-tab" style="background: rgba(255,255,255,0.1); border: none; color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: all 0.3s ease;">Services</button>
+    </div>
+
+    <!-- Hero Section 1 with foto6 -->
+    <section class="hero hero-section" id="hero-1" style="position: relative; height: 100vh; overflow: hidden; display: flex; align-items: center; opacity: 1; transition: opacity 0.5s ease;">
+      <!-- Background Image with Gradient Overlay -->
+      <div style="position: absolute; inset: 0; z-index: 0;">
+        <img src="assets/foto6.png" alt="Hero Background" style="width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--blue-darkest) 20%, rgba(7, 27, 87, 0.8), var(--blue-dark)); opacity: 0.9;"></div>
+      </div>
+      
+      <!-- Particle Background -->
+      <div class="particles-bg" id="particles-container" style="position: absolute; inset: 0; z-index: 1; opacity: 0.4;"></div>
+      
+      <div class="container hero-content" style="position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+        <h1 class="animate-fade-in" style="font-family: 'Playfair Display', serif; font-weight: 300; margin-bottom: 30px;">
+          <span class="animate-slide-up" style="animation-delay: 0.2s; color: var(--white); display: block; font-size: 3.5rem; line-height: 1.2;">Allen Ralford Barkley</span>
+        </h1>
+        <h2 class="animate-fade-in" style="animation-delay: 0.4s; color: var(--white); font-size: 1.8rem; margin-bottom: 30px; font-weight: 300;">
+          Optimize Intelligently. Act Precisely.
+        </h2>
+        <p class="animate-fade-in" style="animation-delay: 0.8s; color: var(--white); font-size: 1.25rem; max-width: 700px; margin-bottom: 40px; font-weight: 300; line-height: 1.6;">Premium consulting services and technical courses for those who demand excellence in optimization, AI, and analytics.</p>
+        <div class="hero-buttons animate-fade-in" style="animation-delay: 1s; display: flex; gap: 20px; flex-wrap: wrap;">
+          <a href="#courses" class="btn-blue" style="background-color: var(--azure); color: var(--white); padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; font-size: 1rem; letter-spacing: 0.5px;">Explore Courses</a>
+          <a href="#products" class="btn-outline" style="background-color: transparent; border: 1px solid var(--white); color: var(--white); padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; font-size: 1rem; letter-spacing: 0.5px;">View Products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero Section 2 with foto1 -->
+    <section class="hero hero-section" id="hero-2" style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; display: flex; align-items: center; opacity: 0; transition: opacity 0.5s ease; pointer-events: none;">
+      <!-- Background Image with Gradient Overlay -->
+      <div style="position: absolute; inset: 0; z-index: 0;">
+        <img src="assets/foto1.png" alt="Solutions Background" style="width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--blue-darkest) 20%, rgba(7, 27, 87, 0.8), var(--blue-dark)); opacity: 0.9;"></div>
+      </div>
+      
+      <!-- Particle Background -->
+      <div class="particles-bg" style="position: absolute; inset: 0; z-index: 1; opacity: 0.4;"></div>
+      
+      <div class="container hero-content" style="position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+        <h1 style="font-family: 'Playfair Display', serif; font-weight: 300; margin-bottom: 30px;">
+          <span style="color: var(--white); display: block; font-size: 3.5rem; line-height: 1.2;">From Model to Impact</span>
+        </h1>
+        <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 30px; font-weight: 300;">
+          Action-ready optimization, AI, and analytics projects
+        </h2>
+        <p style="color: var(--white); font-size: 1.25rem; max-width: 700px; margin-bottom: 40px; font-weight: 300; line-height: 1.6;">We turn complex supply-chain questions into clear decisions. Whether you need a dynamic safety-stock engine, a plant-layout redesign, or a full production-scheduling overhaul, our consultants partner with your team to design, implement, and validate the solution.</p>
+        <div class="hero-buttons" style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <a href="model-to-impact.html" class="btn-blue" style="background-color: var(--azure); color: var(--white); padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; font-size: 1rem; letter-spacing: 0.5px;">Learn More</a>
+          <a href="#contact" class="btn-outline" style="background-color: transparent; border: 1px solid var(--white); color: var(--white); padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; font-size: 1rem; letter-spacing: 0.5px;">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero Section 3 with foto5 -->
+    <section class="hero hero-section" id="hero-3" style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; display: flex; align-items: center; opacity: 0; transition: opacity 0.5s ease; pointer-events: none;">
+      <!-- Background Image with Gradient Overlay -->
+      <div style="position: absolute; inset: 0; z-index: 0;">
+        <img src="assets/foto5.png" alt="Services Background" style="width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to right, var(--blue-darkest) 20%, rgba(7, 27, 87, 0.8), var(--blue-dark)); opacity: 0.9;"></div>
+      </div>
+      
+      <!-- Particle Background -->
+      <div class="particles-bg" style="position: absolute; inset: 0; z-index: 1; opacity: 0.4;"></div>
+      
+      <div class="container hero-content" style="position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+        <h1 style="font-family: 'Playfair Display', serif; font-weight: 300; margin-bottom: 30px;">
+          <span style="color: var(--white); display: block; font-size: 3.5rem; line-height: 1.2;">Optimization Solutions</span>
+        </h1>
+        <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 30px; font-weight: 300;">
+          Delivered on time, on budget, in plain language
+        </h2>
+        <p style="color: var(--white); font-size: 1.25rem; max-width: 700px; margin-bottom: 40px; font-weight: 300; line-height: 1.6;">Our flagship solutions combine advanced analytics, optimization algorithms, and Industry 4.0 technologies to transform your operations. From network design to inventory optimization, we deliver results that matter.</p>
+        <div class="hero-buttons" style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <a href="optimization-solutions.html" class="btn-blue" style="background-color: var(--azure); color: var(--white); padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; font-size: 1rem; letter-spacing: 0.5px;">View Services</a>
+          <a href="#demo" class="btn-outline" style="background-color: transparent; border: 1px solid var(--white); color: var(--white); padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; font-size: 1rem; letter-spacing: 0.5px;">Request Demo</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator animate-bounce" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="var(--silver)">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    // Function to show the selected hero section and hide others
+    function showHero(index) {
+      // Get all hero sections and tabs
+      const heroSections = document.querySelectorAll('.hero-section');
+      const heroTabs = document.querySelectorAll('.hero-tab');
+      
+      // Hide all sections and deactivate all tabs
+      heroSections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.pointerEvents = 'none';
+      });
+      
+      heroTabs.forEach(tab => {
+        tab.style.background = 'rgba(255,255,255,0.1)';
+        tab.classList.remove('active');
+      });
+      
+      // Show the selected section and activate its tab
+      heroSections[index].style.opacity = '1';
+      heroSections[index].style.pointerEvents = 'auto';
+      heroTabs[index].style.background = 'rgba(255,255,255,0.2)';
+      heroTabs[index].classList.add('active');
+    }
+  </script>
+</body>
+</html>
