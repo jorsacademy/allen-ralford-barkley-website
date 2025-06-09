@@ -24,7 +24,7 @@
           <!-- Image 1 -->
           <div class="group relative overflow-hidden rounded-lg aspect-video cursor-pointer">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-darkest/80 z-10"></div>
-            <img src="/images/tech-globe.jpg" alt="Global Technology" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <!-- <img src="/images/tech-globe.jpg" alt="Global Technology" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /> -->
             <div class="absolute bottom-0 left-0 right-0 p-4 z-20">
               <h3 class="text-xl text-white font-medium">Global Reach</h3>
               <p class="text-white/80 text-sm mt-1">Connecting solutions across continents</p>
