@@ -52,7 +52,7 @@
         <!-- Product 3 -->
         <div class="bg-black/20 rounded-lg overflow-hidden group hover:bg-blue-darkest/40 transition-all duration-300">
           <div class="relative aspect-video overflow-hidden">
-            <img src="/images/tech-globe.jpg" alt="Predictive Analytics Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="/images/foto5.jpg" alt="Predictive Analytics Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-blue-darkest/80 to-transparent"></div>
             <div class="absolute bottom-0 left-0 w-full p-4">
               <h3 class="text-xl text-white font-medium">Predictive Analytics Suite</h3>
