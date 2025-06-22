@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SharpForte - Cutting Stock Optimization | Allen Ralford Barkley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-10px); }
+    }
+    
+    .animate-fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    
+    .animate-slide-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 1s forwards;
+    }
+    
+    .animate-bounce {
+      animation: bounce 2s infinite;
+    }
+
+    :root {
+      --white: #FFFFFF;
+      --black: #000000;
+      --blue-darkest: #071B57;
+      --blue-darker: #022593;
+      --blue-dark: #07149D;
+      --blue-medium: #0816AE;
+      --blue: #0918BF;
+      --blue-light: #0A1AD1;
+      --blue-lighter: #0B1DE2;
+      --azure-dark: #0D20F3;
+      --azure: #200CF2;
+      --azure-light: #2C6EC7;
+      --azure-lighter: #3E7CC8;
+      --azure-lightest: #94C9DE;
+      --silver: #F5F5F5;
+      --silver-dark: #AAAAAA;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--blue-darkest);
+      color: var(--white);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .btn-primary {
+      background-color: var(--azure);
+      color: var(--white);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--azure-dark);
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      color: #FFFFFF;
+    }
+    
+    .btn-outline:hover {
+      border-color: #FFFFFF;
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Navigation */
+    .bg-black {
+      background-color: #000000;
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 20px;
+    }
+    
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: #FFFFFF;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: var(--silver-dark);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: #FFFFFF;
+    }
+    
+    .btn-blue {
+      background-color: var(--azure);
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-blue:hover {
+      background-color: var(--azure-dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(7, 27, 87, 0.9) 0%, rgba(2, 37, 147, 0.9) 50%, rgba(7, 20, 157, 0.9) 100%), url('assets/images/sharpforte-hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .hero .subtitle {
+      font-size: 1.5rem;
+      color: var(--azure-lighter);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    /* SharpForte in Action Section */
+    .sharpforte-action {
+      padding: 80px 0;
+      background: var(--blue-darker);
+    }
+
+    .action-showcase {
+      margin-top: 3rem;
+    }
+
+    .action-item {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .action-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-5px);
+    }
+
+    .action-item.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .action-image {
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .action-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .action-image img:hover {
+      transform: scale(1.02);
+    }
+
+    .action-content {
+      flex: 1;
+      padding: 1rem;
+    }
+
+    .action-content h3 {
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .action-content p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 80px 0;
+      background: var(--blue-dark);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--white);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--azure-light);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--azure) 0%, var(--azure-light) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .feature-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .feature-card p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    /* Applications Section */
+    .applications {
+      padding: 80px 0;
+      background: var(--blue-dark);
+    }
+
+    .applications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .application-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .application-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+      border-radius: 0 8px 0 8px;
+    }
+
+    .application-card.metallic::before {
+      background-image: url('assets/images/metallic-profiles.jpg');
+    }
+
+    .application-card.pipes::before {
+      background-image: url('assets/images/pipes-rods.jpg');
+    }
+
+    .application-card.rolled::before {
+      background-image: url('assets/images/rolled-products.jpg');
+    }
+
+    .application-card.sheets::before {
+      background-image: url('assets/images/sheet-plates.jpg');
+    }
+
+    .application-card.cables::before {
+      background-image: url('assets/images/cables-wires.jpg');
+    }
+
+    .application-card.printing::before {
+      background-image: url('assets/images/printing-packaging.jpg');
+    }
+
+    .application-card.construction::before {
+      background-image: url('assets/images/construction-materials.jpg');
+    }
+
+    .application-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .application-card h4 {
+      color: var(--azure-light);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .application-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .application-card li {
+      color: rgba(255, 255, 255, 0.9);
+      padding: 0.25rem 0;
+      font-size: 0.9rem;
+    }
+
+    .application-card li:before {
+      content: "▸";
+      color: var(--azure-light);
+      margin-right: 0.5rem;
+    }
+
+    /* Industries Section */
+    .industries {
+      padding: 80px 0;
+      background: var(--blue-medium);
+    }
+
+    .industries-table {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 3rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .industries-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .industries-table th {
+      background: linear-gradient(135deg, var(--azure-dark) 0%, var(--azure) 100%);
+      color: var(--white);
+      padding: 1.5rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .industries-table td {
+      padding: 1.25rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .industries-table tbody tr {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .industries-table tbody tr:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: none;
+    }
+
+    .industries-table tbody tr:hover td {
+      color: var(--white);
+      padding-left: 1.5rem;
+    }
+
+    .industries-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Demo Section */
+    .demo-section {
+      padding: 80px 0;
+      background: var(--blue-light);
+    }
+
+    .demo-content {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .demo-text {
+      flex: 1;
+    }
+
+    .demo-text h3 {
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .demo-text p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .demo-features {
+      list-style: none;
+      padding: 0;
+    }
+
+    .demo-features li {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .demo-features li::before {
+      content: "✓";
+      color: var(--azure-light);
+      font-weight: bold;
+      margin-right: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .demo-gif {
+      flex: 1;
+      text-align: center;
+    }
+
+    .demo-gif img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .demo-caption {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--azure-dark) 0%, var(--azure) 100%);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 40px 0 20px;
+      text-align: center;
+    }
+
+    .footer p {
+      color: var(--silver-dark);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--silver-dark);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .industries-table {
+        overflow-x: auto;
+      }
+
+      .action-item {
+        flex-direction: column !important;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .action-image {
+        max-width: 100%;
+      }
+
+      .action-content h3 {
+        font-size: 1.3rem;
+      }
+
+      .action-content p {
+        font-size: 1rem;
+      }
+
+      .demo-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .demo-text h3 {
+        font-size: 1.5rem;
+      }
+
+      .demo-text p {
+        font-size: 1rem;
+      }
+
+      .demo-gif img {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="bg-black" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
+    <div class="navbar-container">
+      <a href="index.html" class="logo">Allen Ralford Barkley</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="index.html#products" class="nav-link">Products</a>
+        <a href="index.html#consulting" class="nav-link">Consulting</a>
+        <a href="#contact" class="btn-blue">Book Discovery Call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content animate-fade-in">
+        <h1>SharpForte</h1>
+        <p class="subtitle">Advanced Cutting Stock Optimization</p>
+        <p class="description">
+          Minimize waste, maximize efficiency. SharpForte delivers intelligent cutting stock optimization 
+          solutions for manufacturing, construction, and industrial applications.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#features" class="btn btn-primary">Explore Features</a>
+          <a href="#contact" class="btn btn-outline">Request Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SharpForte in Action Section -->
+  <section class="sharpforte-action" id="action">
+    <div class="container">
+      <h2 class="section-title">SharpForte in Action</h2>
+      <div class="action-showcase">
+        <div class="action-item">
+          <div class="action-image">
+            <img src="assets/images/sharpforte1.png" alt="Precision Cutting Optimization">
+          </div>
+          <div class="action-content">
+            <h3>Precision Cutting Optimization</h3>
+            <p>Advanced algorithms calculate the most efficient cutting patterns, minimizing waste while maximizing material utilization across all your manufacturing processes.</p>
+          </div>
+        </div>
+        
+        <div class="action-item reverse">
+          <div class="action-content">
+            <h3>Real-time Layout Planning</h3>
+            <p>Instantly visualize optimal cutting layouts with our intelligent nesting technology, ensuring maximum efficiency for both 1D linear cuts and 2D sheet optimization.</p>
+          </div>
+          <div class="action-image">
+            <img src="assets/images/sharpforte2.png" alt="Real-time Layout Planning">
+          </div>
+        </div>
+        
+        <div class="action-item">
+          <div class="action-image">
+            <img src="assets/images/sharpforte3.png" alt="Industrial Manufacturing Solutions">
+          </div>
+          <div class="action-content">
+            <h3>Industrial Manufacturing Solutions</h3>
+            <p>From metalworking to construction materials, SharpForte adapts to your industry's specific requirements, delivering consistent results across diverse manufacturing environments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title animate-slide-up">Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card animate-slide-up">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 3V21H21V19H5V3H3Z" fill="currentColor"/>
+              <path d="M7 17H9V10H7V17ZM11 17H13V7H11V17ZM15 17H17V13H15V17Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>1D Optimization</h3>
+          <p>Advanced algorithms for linear cutting optimization, perfect for profiles, pipes, rods, and cables with minimal material waste.</p>
+        </div>
+        <div class="feature-card animate-slide-up">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 3H21V5H3V3ZM3 7H21V9H3V7ZM3 11H21V13H3V11ZM3 15H21V17H3V15ZM3 19H21V21H3V19Z" fill="currentColor"/>
+              <path d="M7 7V17H17V7H7ZM9 9H15V15H9V9Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>2D Nesting</h3>
+          <p>Sophisticated nesting algorithms for sheet materials, glass, metal plates, and fabric optimization with complex shape handling.</p>
+        </div>
+        <div class="feature-card animate-slide-up">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 2.05V5.08C16.39 5.57 19 8.47 19 12C19 12.9 18.82 13.75 18.5 14.54L21.12 16.07C21.68 14.83 22 13.45 22 12C22 6.82 18.05 2.55 13 2.05ZM12 19C7.59 19 4 15.41 4 11C4 6.59 7.59 3 12 3C12.34 3 12.67 3.03 13 3.08V6.1C12.67 6.04 12.34 6 12 6C9.24 6 7 8.24 7 11S9.24 16 12 16C14.76 16 17 13.76 17 11C17 10.66 16.96 10.33 16.9 10H19.92C19.97 10.33 20 10.66 20 11C20 15.41 16.41 19 12 19Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Real-time Processing</h3>
+          <p>Lightning-fast calculations that provide instant optimization results, even for complex cutting patterns and large datasets.</p>
+        </div>
+        <div class="feature-card animate-slide-up">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1L13.5 2.5L16.17 5.17L10.5 10.84L11.92 12.25L15.92 8.25L21 9ZM11.5 12.84L7.84 16.5L5.17 13.83L2.5 15.5L1 14L7 8L11.5 12.84Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Waste Minimization</h3>
+          <p>Intelligent algorithms that significantly reduce material waste, leading to substantial cost savings and environmental benefits.</p>
+        </div>
+        <div class="feature-card animate-slide-up">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="currentColor"/>
+              <path d="M7 12H9V17H7V12ZM11 10H13V17H11V10ZM15 8H17V17H15V8Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Analytics Dashboard</h3>
+          <p>Comprehensive reporting and analytics to track efficiency gains, cost savings, and optimization performance over time.</p>
+        </div>
+        <div class="feature-card animate-slide-up">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.7 19L13.6 9.9C14.5 7.6 14 4.9 12.1 3C10.1 1 7.1 1 5.1 3S1 10.1 3 12.1C4.9 14 7.6 14.5 9.9 13.6L19 22.7C19.4 23.1 20.1 23.1 20.5 22.7L22.7 20.5C23.1 20.1 23.1 19.4 22.7 19ZM7.5 11C6.1 11 5 9.9 5 8.5S6.1 6 7.5 6S10 7.1 10 8.5S8.9 11 7.5 11Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Easy Integration</h3>
+          <p>Seamless integration with existing ERP systems, CAD software, and manufacturing workflows through robust API connections.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications Section -->
+  <section class="applications" id="applications">
+    <div class="container">
+      <h2 class="section-title">Material Applications</h2>
+             <div class="applications-grid">
+         <div class="application-card metallic">
+           <h4>Metallic & Non-metallic Profiles</h4>
+           <ul>
+             <li>Aluminum profiles</li>
+             <li>Steel profiles</li>
+             <li>PVC profiles</li>
+             <li>Wooden slats</li>
+             <li>Laminated beams</li>
+           </ul>
+         </div>
+         <div class="application-card pipes">
+           <h4>Pipe & Rod Products</h4>
+           <ul>
+             <li>Iron or steel pipes</li>
+             <li>Copper, plastic (PVC, PPRC) pipes</li>
+             <li>Construction iron</li>
+             <li>Round, square, rectangular rods</li>
+           </ul>
+         </div>
+         <div class="application-card rolled">
+           <h4>Rolled Products</h4>
+           <ul>
+             <li>Fabric rolls</li>
+             <li>Paper rolls</li>
+             <li>Film, plastic sheet rolls</li>
+             <li>2D optimization available</li>
+           </ul>
+         </div>
+         <div class="application-card sheets">
+           <h4>Sheet & Plate Products</h4>
+           <ul>
+             <li>Particleboard, MDF, OSB sheets</li>
+             <li>Steel/aluminum sheets</li>
+             <li>Glass sheets</li>
+             <li>2D nesting optimization</li>
+           </ul>
+         </div>
+         <div class="application-card cables">
+           <h4>Cable & Wire Products</h4>
+           <ul>
+             <li>Electrical cables</li>
+             <li>Wire spools</li>
+             <li>Length-based cutting</li>
+             <li>1D modeling sufficient</li>
+           </ul>
+         </div>
+         <div class="application-card printing">
+           <h4>Printing & Packaging</h4>
+           <ul>
+             <li>Label rolls</li>
+             <li>Sticker rolls</li>
+             <li>Printing paper (roll or sheet)</li>
+             <li>Custom dimensions</li>
+           </ul>
+         </div>
+         <div class="application-card construction">
+           <h4>Construction Materials</h4>
+           <ul>
+             <li>Glass sheets</li>
+             <li>Ceramic tiles</li>
+             <li>Standard to custom sizes</li>
+             <li>2D nesting typically required</li>
+           </ul>
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="industries" id="industries">
+    <div class="container">
+      <h2 class="section-title">Industry Applications</h2>
+      <div class="industries-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Sector</th>
+              <th>Material Used</th>
+              <th>Application Area</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Aluminum Joinery</td>
+              <td>Aluminum Profile</td>
+              <td>Window and door production</td>
+            </tr>
+            <tr>
+              <td>Steel Construction</td>
+              <td>Square/rectangular profile</td>
+              <td>Roof and skeleton systems</td>
+            </tr>
+            <tr>
+              <td>Furniture</td>
+              <td>Wooden strips, profiles</td>
+              <td>Panel frames</td>
+            </tr>
+            <tr>
+              <td>Pipe Systems</td>
+              <td>Metal/PVC pipes</td>
+              <td>Irrigation, heating systems</td>
+            </tr>
+            <tr>
+              <td>Shelf Systems</td>
+              <td>Iron profiles</td>
+              <td>Storage solutions</td>
+            </tr>
+            <tr>
+              <td>Automotive Parts</td>
+              <td>Steel bars</td>
+              <td>Chassis parts</td>
+            </tr>
+            <tr>
+              <td>Signage</td>
+              <td>Aluminum profiles</td>
+              <td>Box letters, sign cases</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section class="demo-section" id="demo">
+    <div class="container">
+      <h2 class="section-title">See SharpForte in Action</h2>
+      <div class="demo-content">
+        <div class="demo-text">
+          <h3>Live Optimization Demo</h3>
+          <p>Watch how SharpForte transforms your cutting operations in real-time. Our intelligent algorithms analyze your requirements and instantly generate optimal cutting patterns, reducing waste and maximizing efficiency.</p>
+          <ul class="demo-features">
+            <li>✓ Real-time pattern generation</li>
+            <li>✓ Instant waste calculation</li>
+            <li>✓ Multiple layout options</li>
+            <li>✓ Export-ready cutting plans</li>
+          </ul>
+        </div>
+        <div class="demo-gif">
+          <img src="assets/images/sfdemopage.gif" alt="SharpForte Live Demo - Cutting Stock Optimization in Action">
+          <p class="demo-caption">Interactive demo showing SharpForte's optimization process</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2>Ready to Optimize Your Operations?</h2>
+      <p>
+        Join leading manufacturers who have reduced material waste by up to 30% with SharpForte. 
+        Get started with a personalized demo and see immediate results.
+      </p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-outline" style="background-color: var(--white); color: var(--azure-dark);">Schedule Demo</a>
+        <a href="#" class="btn btn-outline">Contact Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="preview.html">Home</a>
+        <a href="preview.html#about">About</a>
+        <a href="preview.html#courses">Courses</a>
+        <a href="preview.html#products">Products</a>
+        <a href="preview.html#consulting">Consulting</a>
+      </div>
+      <p>&copy; 2025 Allen Ralford Barkley. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = '0.2s';
+          entry.target.classList.add('animate-slide-up');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards for animation
+    document.querySelectorAll('.feature-card, .application-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Smooth table interactions are now handled via CSS
+  </script>
+</body>
+</html>
