@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page Template - Allen Ralford Barkley</title>
+  
+  <!-- Centralized Navigation CSS -->
+  <link rel="stylesheet" href="../css/navigation.css">
+  
+  <!-- Mercedes Color Variables -->
+  <style>
+    :root {
+      --primary: #001D97;
+      --secondary: #000897;
+      --accent: #0A249B;
+      --dark: #00115B;
+      --blue-1: #001369;
+      --blue-2: #070F47;
+      --blue-3: #022593;
+      --blue-4: #0340C6;
+      --blue-5: #010676;
+      --blue-6: #031961;
+      --text-dark: #0D0D0D;
+      --white: #FFFFFF;
+      --blue-darkest: #001D97;
+      --gradient-1: linear-gradient(135deg, var(--primary), var(--secondary));
+      --gradient-2: linear-gradient(135deg, var(--blue-3), var(--blue-4));
+      --gradient-3: linear-gradient(135deg, var(--dark), var(--blue-1));
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--white);
+      padding-top: 120px; /* Account for fixed navigation */
+    }
+
+    /* Your product page styles go here */
+    .main-content {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation will be automatically inserted here by navigation.js -->
+  
+  <!-- Your product page content goes here -->
+  <div class="main-content">
+    <h1>Your Product Page Content</h1>
+    <p>This template shows how to integrate the centralized navigation system.</p>
+  </div>
+
+  <!-- Centralized Navigation JavaScript -->
+  <script src="../js/navigation.js"></script>
+  
+  <!-- Your page-specific JavaScript goes here -->
+  <script>
+    // Your product page specific code
+    console.log('Product page loaded with centralized navigation');
+  </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model-Based Decision Support - Allen Ralford Barkley</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --black: #000000;
+      --blue-darkest: #071B57;
+      --blue-darker: #022593;
+      --blue-dark: #07149D;
+      --blue-medium: #0816AE;
+      --blue: #0918BF;
+      --blue-light: #0A1AD1;
+      --blue-lighter: #0B1DE2;
+      --azure-dark: #0D20F3;
+      --azure: #200CF2;
+      --azure-light: #2C6EC7;
+      --azure-lighter: #3E7CC8;
+      --azure-lightest: #94C9DE;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--blue-darkest) 0%, var(--blue-dark) 100%);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .logo {
+      margin-bottom: 40px;
+    }
+
+    .logo img {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+
+    .company-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 60px;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+
+    .construction-message {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 50px;
+      line-height: 1.6;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .construction-icon {
+      font-size: 4rem;
+      margin-bottom: 30px;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 20px;
+      }
+      
+      .page-title {
+        font-size: 2.5rem;
+      }
+      
+      .construction-message {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="assets/logo.jpg" alt="Allen Ralford Barkley Logo">
+      <div class="company-name">Allen Ralford Barkley</div>
+    </div>
+    
+    <div class="construction-icon">🎯</div>
+    
+    <h1 class="page-title">Model-Based Decision Support</h1>
+    
+    <p class="construction-message">
+      This page is currently under construction.<br>
+      Thank you for your understanding.
+    </p>
+    
+    <a href="index.html" class="back-button">← Return to Home</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,286 @@
+/* Modern Professional Enhancements - Clean Mercedes-Inspired Style */
+
+/* Mercedes Color Palette Variables */
+:root {
+  --mercedes-primary: #001D97;
+  --mercedes-secondary: #000897;
+  --mercedes-accent: #0A249B;
+  --mercedes-blue-1: #00115B;
+  --mercedes-blue-2: #001369;
+  --mercedes-blue-3: #070F47;
+  --mercedes-blue-4: #022593;
+  --mercedes-blue-5: #0340C6;
+  --mercedes-blue-6: #010676;
+  --mercedes-blue-7: #031961;
+  --mercedes-dark: #0D0D0D;
+  --mercedes-white: #FFFFFF;
+}
+
+/* Remove all animations and floating effects */
+* {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Clean Professional Styling */
+.professional-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(52, 64, 198, 0.2);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.professional-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--mercedes-blue-5);
+  box-shadow: 0 8px 25px rgba(3, 64, 198, 0.25);
+}
+
+/* Clean Image Styling */
+.professional-image {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+.professional-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.professional-image:hover img {
+  transform: scale(1.02);
+}
+
+/* Mercedes-Style Typography */
+.professional-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--mercedes-white);
+}
+
+.professional-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  opacity: 0.9;
+  letter-spacing: 0.3px;
+}
+
+.professional-text {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Clean Professional Layout */
+.clean-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Professional Button Styling */
+.professional-button {
+  background: linear-gradient(135deg, var(--mercedes-primary), var(--mercedes-secondary));
+  border: none;
+  color: var(--mercedes-white);
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.professional-button:hover {
+  background: linear-gradient(135deg, var(--mercedes-secondary), var(--mercedes-accent));
+  box-shadow: 0 4px 12px rgba(0, 29, 151, 0.4);
+}
+
+/* Clean Section Dividers */
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--mercedes-blue-3), transparent);
+  margin: 2rem 0;
+}
+
+/* Professional Stats/Numbers */
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 200;
+  color: var(--mercedes-white);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+/* Subtle Professional Hover Effects */
+.subtle-hover {
+  transition: all 0.3s ease;
+}
+
+.subtle-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Clean Text Styling */
+.clean-text {
+  color: var(--white);
+  font-weight: 300;
+}
+
+.clean-text-emphasis {
+  color: var(--white);
+  font-weight: 400;
+}
+
+/* Professional Spacing */
+.professional-spacing {
+  margin: 1.5rem 0;
+}
+
+.professional-spacing-large {
+  margin: 3rem 0;
+}
+
+/* Clean Border Styling */
+.clean-border {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.clean-border-hover:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile Menu Enhancement */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--white);
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Clean Responsive Design */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(7, 20, 157, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2rem;
+    transition: left 0.3s ease;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .nav-item {
+    margin: 1rem 0;
+  }
+  
+  .professional-spacing-large {
+    margin: 2rem 0;
+  }
+}
+
+/* Minimal Progress Indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+
+/* Clean Focus States */
+.professional-focus:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Mercedes-Style Clean Lines */
+.clean-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  margin: 2rem 0;
+}
+
+/* Clean Professional Buttons */
+.btn-professional {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 4px;
+  font-weight: 300;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.btn-professional:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  color: var(--white);
+  text-decoration: none;
+}

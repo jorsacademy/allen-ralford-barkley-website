@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GDPR Compliance - Allen Ralford Barkley</title>
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; script-src 'self' 'unsafe-inline';">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Centralized Navigation CSS -->
+  <link rel="stylesheet" href="css/navigation.css">
+  
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --black: #000000;
+      --blue-darkest: #071B57;
+      --blue-darker: #022593;
+      --blue-dark: #07149D;
+      --blue-medium: #0816AE;
+      --blue: #0918BF;
+      --blue-light: #0A1AD1;
+      --azure: #200CF2;
+      --azure-light: #2C6EC7;
+      --gold: #D4AF37;
+      --gold-light: #E6C547;
+      --navy: #1a365d;
+      --navy-dark: #2d3748;
+      --navy-light: #4a5568;
+      --silver: #e2e8f0;
+      --silver-light: #f7fafc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--blue-darkest);
+      color: var(--silver);
+      line-height: 1.6;
+      padding-top: 120px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .legal-content {
+      background: linear-gradient(to right, var(--blue-darker), var(--blue-darkest));
+      padding: 80px 0;
+      min-height: calc(100vh - 200px);
+    }
+
+    .legal-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .legal-header h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .legal-header p {
+      font-size: 1.2rem;
+      color: var(--silver);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .legal-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 40px;
+      margin-bottom: 30px;
+      border-left: 4px solid var(--azure);
+    }
+
+    .legal-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .legal-section h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      margin-top: 25px;
+      color: var(--azure-light);
+    }
+
+    .legal-section p {
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+
+    .legal-section ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    .legal-section li {
+      margin-bottom: 8px;
+    }
+
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .right-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 20px;
+      border-left: 3px solid var(--azure-light);
+    }
+
+    .right-card h4 {
+      color: var(--azure-light);
+      margin-bottom: 10px;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .btn-submit {
+      background: var(--azure);
+      color: var(--white);
+      padding: 12px 30px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background: var(--azure-light);
+    }
+
+    .last-updated {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      font-style: italic;
+      color: var(--silver);
+    }
+
+    .footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 0 30px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 15px;
+    }
+
+    .footer-link {
+      color: var(--silver);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--azure-light);
+    }
+
+    .copyright {
+      color: var(--silver);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html" class="logo">Allen Ralford Barkley</a>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Industries</a></li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Solutions</a>
+          <div class="dropdown-content">
+            <a href="manufacturing-excellence.html">Manufacturing Excellence</a>
+            <a href="supply-chain-intelligence.html">Supply Chain Intelligence</a>
+            <a href="digital-operations.html">Digital Operations</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Services</a>
+          <div class="dropdown-content">
+            <a href="strategy-consulting.html">Strategy and Consulting</a>
+            <a href="implementation-delivery.html">Implementation and Delivery</a>
+            <a href="analytics-intelligence.html">Analytics and Intelligence</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Submenu -->
+  <div class="submenu">
+    <div class="submenu-links">
+      <a href="#" class="submenu-link">Courses</a>
+      <a href="#" class="submenu-link">Products</a>
+      <a href="#" class="submenu-link btn-outline">Book Discovery Call</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <section class="legal-content">
+    <div class="container">
+      <div class="legal-header">
+        <h1>GDPR Compliance</h1>
+        <p>Your data protection rights under the General Data Protection Regulation (GDPR).</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Our Commitment to GDPR</h2>
+        <p>Allen Ralford Barkley is committed to protecting your personal data and respecting your privacy rights in accordance with the General Data Protection Regulation (GDPR). This page explains your rights and how we comply with GDPR requirements.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Your Rights Under GDPR</h2>
+        <p>Under GDPR, you have several important rights regarding your personal data:</p>
+        
+        <div class="rights-grid">
+          <div class="right-card">
+            <h4>Right of Access</h4>
+            <p>You have the right to request copies of your personal data that we hold.</p>
+          </div>
+          
+          <div class="right-card">
+            <h4>Right to Rectification</h4>
+            <p>You have the right to request correction of inaccurate or incomplete personal data.</p>
+          </div>
+          
+          <div class="right-card">
+            <h4>Right to Erasure</h4>
+            <p>You have the right to request deletion of your personal data under certain circumstances.</p>
+          </div>
+          
+          <div class="right-card">
+            <h4>Right to Restrict Processing</h4>
+            <p>You have the right to request that we restrict the processing of your personal data.</p>
+          </div>
+          
+          <div class="right-card">
+            <h4>Right to Data Portability</h4>
+            <p>You have the right to request transfer of your data to another organization.</p>
+          </div>
+          
+          <div class="right-card">
+            <h4>Right to Object</h4>
+            <p>You have the right to object to our processing of your personal data.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <h2>Legal Basis for Processing</h2>
+        <p>We process your personal data based on the following legal grounds:</p>
+        <ul>
+          <li><strong>Consent:</strong> When you have given clear consent for us to process your data</li>
+          <li><strong>Contract:</strong> When processing is necessary for a contract we have with you</li>
+          <li><strong>Legal Obligation:</strong> When we must process your data to comply with the law</li>
+          <li><strong>Legitimate Interests:</strong> When processing is necessary for our legitimate business interests</li>
+        </ul>
+      </div>
+
+      <div class="legal-section">
+        <h2>Data Protection Measures</h2>
+        <p>We implement appropriate technical and organizational measures to ensure data security:</p>
+        <ul>
+          <li>Encryption of data in transit and at rest</li>
+          <li>Regular security assessments and updates</li>
+          <li>Access controls and authentication systems</li>
+          <li>Staff training on data protection principles</li>
+          <li>Incident response procedures</li>
+        </ul>
+      </div>
+
+      <div class="legal-section">
+        <h2>Data Retention</h2>
+        <p>We retain personal data only for as long as necessary to fulfill the purposes for which it was collected, including:</p>
+        <ul>
+          <li>Client data: Retained for the duration of our business relationship plus 7 years for legal compliance</li>
+          <li>Marketing data: Retained until consent is withdrawn or for 3 years of inactivity</li>
+          <li>Website analytics: Retained for 26 months</li>
+          <li>Contact inquiries: Retained for 2 years unless a business relationship develops</li>
+        </ul>
+      </div>
+
+      <div class="legal-section">
+        <h2>International Data Transfers</h2>
+        <p>If we transfer your personal data outside the European Economic Area (EEA), we ensure appropriate safeguards are in place, such as:</p>
+        <ul>
+          <li>Adequacy decisions by the European Commission</li>
+          <li>Standard Contractual Clauses (SCCs)</li>
+          <li>Binding Corporate Rules (BCRs)</li>
+          <li>Certification schemes</li>
+        </ul>
+      </div>
+
+      <div class="legal-section">
+        <h2>Exercise Your Rights</h2>
+        <p>To exercise any of your GDPR rights, please use the form below or contact us directly:</p>
+        
+        <div class="contact-form">
+          <h3>GDPR Rights Request Form</h3>
+          <form>
+            <div class="form-group">
+              <label for="request-type">Type of Request</label>
+              <select id="request-type" name="request-type" required>
+                <option value="">Select a request type</option>
+                <option value="access">Right of Access</option>
+                <option value="rectification">Right to Rectification</option>
+                <option value="erasure">Right to Erasure</option>
+                <option value="restrict">Right to Restrict Processing</option>
+                <option value="portability">Right to Data Portability</option>
+                <option value="object">Right to Object</option>
+                <option value="withdraw-consent">Withdraw Consent</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="full-name">Full Name</label>
+              <input type="text" id="full-name" name="full-name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="details">Request Details</label>
+              <textarea id="details" name="details" rows="5" placeholder="Please provide specific details about your request..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn-submit">Submit Request</button>
+          </form>
+          
+          <p style="margin-top: 20px; font-size: 0.9rem; color: var(--silver);">
+            We will respond to your request within 30 days. For verification purposes, we may need to request additional information to confirm your identity.
+          </p>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <h2>Data Protection Officer</h2>
+        <p>For questions about data protection or to exercise your rights, you can contact our Data Protection Officer:</p>
+        <p>Email: dpo@allenralfordbarkey.com</p>
+        <p>Address: Allen Ralford Barkley, Data Protection Officer</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Supervisory Authority</h2>
+        <p>You have the right to lodge a complaint with a supervisory authority if you believe our processing of your personal data violates GDPR. You can contact your local data protection authority or the authority in the country where the alleged violation occurred.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2>Updates to This Information</h2>
+        <p>We may update this GDPR compliance information from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes.</p>
+      </div>
+
+      <div class="last-updated">
+        <p>Last updated: January 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div class="footer-links">
+          <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+          <a href="terms-of-service.html" class="footer-link">Terms of Service</a>
+          <a href="cookie-policy.html" class="footer-link">Cookie Policy</a>
+          <a href="gdpr.html" class="footer-link">GDPR</a>
+        </div>
+        <div class="copyright">
+          © 2025 Allen Ralford Barkley. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Centralized Navigation JavaScript -->
+  <script src="js/navigation.js"></script>
+</body>
+</html>

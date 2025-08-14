@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retail and E-commerce - Allen Ralford Barkley</title>
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; script-src 'self' 'unsafe-inline';">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Centralized Navigation CSS -->
+  <link rel="stylesheet" href="css/navigation.css">
+  <style>
+    :root {
+      --primary: #001D97;
+      --secondary: #000897;
+      --accent: #0A249B;
+      --dark: #00115B;
+      --blue-1: #001369;
+      --blue-2: #070F47;
+      --blue-3: #022593;
+      --blue-4: #0340C6;
+      --blue-5: #010676;
+      --blue-6: #031961;
+      --text-dark: #0D0D0D;
+      --white: #FFFFFF;
+      --blue-darkest: #001D97;
+      --gradient-1: linear-gradient(135deg, var(--primary), var(--secondary));
+      --gradient-2: linear-gradient(135deg, var(--blue-3), var(--blue-4));
+      --gradient-3: linear-gradient(135deg, var(--dark), var(--blue-1));
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation Styles - Exact Copy from Home Page */
+    .fixed {
+      position: fixed;
+    }
+    
+    .top-0 {
+      top: 0;
+    }
+    
+    .left-0 {
+      left: 0;
+    }
+    
+    .w-full {
+      width: 100%;
+    }
+    
+    .z-40 {
+      z-index: 40;
+    }
+    
+    .bg-black {
+      background-color: black;
+    }
+    
+    .py-3 {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      opacity: 0.8;
+    }
+    
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1000;
+      min-width: 200px;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: rgba(0, 29, 151, 0.1);
+    }
+    
+    .btn-blue {
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-blue:hover {
+      background-color: rgba(255,255,255,0.3) !important;
+    }
+
+    /* Professional Hero Section with Gradient */
+    .hero {
+      width: 100%;
+      background: linear-gradient(135deg, #070F47 0%, #05165F 50%, #051765 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 140px 0 120px;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>') no-repeat center center;
+      background-size: cover;
+      opacity: 0.1;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 40px;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 12px;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 8px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 2px;
+      animation: scrollDown 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+
+    @keyframes scrollDown {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-8px);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(8px);
+      }
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 1000px;
+      padding: 0 2rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      margin-bottom: 2rem;
+      line-height: 1.1;
+      color: #ffffff;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      font-weight: 300;
+      opacity: 0.7;
+      max-width: 500px;
+      margin: 0 auto;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.2);
+    }
+
+    .mercedes-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 60px;
+      width: 100%;
+    }
+
+    .mercedes-section {
+      padding: 120px 0;
+      background: var(--white);
+    }
+
+    .mercedes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .mercedes-grid.reverse {
+      direction: rtl;
+    }
+
+    .mercedes-grid.reverse > * {
+      direction: ltr;
+    }
+
+    .mercedes-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .mercedes-subtitle {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 32px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .mercedes-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--gray-darkest);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .mercedes-description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #64748b;
+      margin-bottom: 48px;
+    }
+
+    .mercedes-features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .mercedes-feature {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mercedes-feature-title {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 1rem;
+    }
+
+    .mercedes-feature-text {
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .mercedes-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .mercedes-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Section Backgrounds */
+    .mercedes-section:nth-child(even) {
+      background: #fafafa;
+    }
+
+    .mercedes-section:nth-child(odd) {
+      background: var(--white);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .mercedes-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .mercedes-container {
+        padding: 0 2rem;
+      }
+
+      .mercedes-title {
+        font-size: 2.5rem;
+      }
+
+      .mercedes-description {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation - Exact Copy from Home Page -->
+  <nav class="fixed top-0 left-0 w-full z-40">
+    <!-- Top Black Header -->
+    <div class="bg-black py-3">
+      <div class="container navbar-container">
+        <a href="index.html" class="logo"><img src="assets/logo.jpg" alt="Allen Ralford Barkley Logo" style="height: 40px; margin-right: 10px;"> Allen Ralford Barkley</a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link" style="color: white; font-weight: 500;">Home</a>
+          <div class="dropdown" style="position: relative; display: inline-block;">
+            <a href="#industries" class="nav-link" style="color: white; font-weight: 500;">Industries</a>
+            <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; border-radius: 4px; padding: 10px 0; margin-top: 5px; opacity: 0; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease;">
+              <a href="manufacturing.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Manufacturing</a>
+              <a href="supply-chain-logistics.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Logistics & Supply Chain</a>
+              <a href="retail-ecommerce.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Retail & E-commerce</a>
+              <a href="automotive.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Automotive</a>
+              <a href="food-beverage.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Food & Beverage</a>
+              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Chemical & Process Industries</a>
+              <a href="consumer-electronics-appliances.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Consumer Electronics & Appliances</a>
+              <a href="metal-machinery.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Metal & Machinery</a>
+              <a href="energy-utilities.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Energy & Utilities</a>
+            </div>
+          </div>
+          <div class="dropdown" style="position: relative; display: inline-block;">
+            <a href="#" class="nav-link" style="color: white; font-weight: 500; text-decoration: none;">Solutions</a>
+            <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; border-radius: 4px; padding: 10px 0; margin-top: 5px; opacity: 0; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease;">
+              <a href="manufacturing-excellence.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Manufacturing Excellence</a>
+              <a href="supply-chain-intelligence.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Supply Chain Intelligence</a>
+              <a href="digital-operations.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Digital Operations</a>
+            </div>
+          </div>
+          <div class="dropdown" style="position: relative; display: inline-block;">
+            <a href="#" class="nav-link" style="color: white; font-weight: 500; text-decoration: none;">Services</a>
+            <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; border-radius: 4px; padding: 10px 0; margin-top: 5px; opacity: 0; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease;">
+              <a href="strategy-consulting.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Strategy & Consulting</a>
+              <a href="implementation-delivery.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Implementation & Delivery</a>
+              <a href="analytics-intelligence.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Analytics & Intelligence</a>
+            </div>
+          </div>
+          <a href="about.html" class="nav-link" style="color: white; font-weight: 500;">About</a>
+          <a href="contact.html" class="nav-link" style="color: white; font-weight: 500;">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Retail and E-commerce Excellence</h1>
+      <p class="hero-subtitle">Advanced Retail Optimization. Intelligent E-commerce.</p>
+    </div>
+    <div class="scroll-indicator"></div>
+  </section>
+
+  <!-- Retail & E-commerce Overview -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">Digital Commerce Excellence</h2>
+          <h1 class="mercedes-title">Transforming retail through optimization</h1>
+          <p class="mercedes-description">
+            Allen Ralford Barkley optimize your retail e-commerce operations with cutting-edge solutions that enhance customer experience, streamline inventory management, and maximize profitability across all channels.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Inventory Optimization</div>
+              <div class="mercedes-feature-text">Smart demand forecasting and stock level management</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Customer Experience</div>
+              <div class="mercedes-feature-text">Personalized shopping journeys and recommendation engines</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Omnichannel Integration</div>
+              <div class="mercedes-feature-text">Seamless online and offline customer experiences</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Retail & E-Commerce/re1.jpg" alt="Retail E-commerce Optimization">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E-commerce Platform Optimization -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid reverse">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">E-commerce Platforms</h2>
+          <h1 class="mercedes-title">Optimized digital storefronts</h1>
+          <p class="mercedes-description">
+            Enhance your e-commerce platform performance with advanced analytics, conversion optimization, and intelligent product recommendations that drive sales and improve customer satisfaction.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Conversion Optimization</div>
+              <div class="mercedes-feature-text">A/B testing and user experience improvements</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Product Recommendations</div>
+              <div class="mercedes-feature-text">AI-powered personalization and cross-selling</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Performance Analytics</div>
+              <div class="mercedes-feature-text">Real-time insights and business intelligence</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Retail & E-Commerce/re2.jpg" alt="E-commerce Platform Optimization">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Supply Chain & Logistics -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">Supply Chain Excellence</h2>
+          <h1 class="mercedes-title">Streamlined logistics operations</h1>
+          <p class="mercedes-description">
+            Optimize your retail supply chain with intelligent demand planning, automated replenishment, and efficient distribution networks that reduce costs and improve delivery times.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Demand Planning</div>
+              <div class="mercedes-feature-text">Predictive analytics for accurate forecasting</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Automated Replenishment</div>
+              <div class="mercedes-feature-text">Smart inventory management and ordering systems</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Distribution Optimization</div>
+              <div class="mercedes-feature-text">Efficient warehouse and delivery network design</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Retail & E-Commerce/re3.jpg" alt="Supply Chain Optimization">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Analytics -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid reverse">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">Customer Intelligence</h2>
+          <h1 class="mercedes-title">Data-driven customer insights</h1>
+          <p class="mercedes-description">
+            Leverage advanced customer analytics to understand shopping behaviors, predict preferences, and create targeted marketing campaigns that increase customer lifetime value.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Behavioral Analysis</div>
+              <div class="mercedes-feature-text">Deep insights into customer shopping patterns</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Segmentation</div>
+              <div class="mercedes-feature-text">Targeted customer groups for personalized marketing</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Lifetime Value Optimization</div>
+              <div class="mercedes-feature-text">Strategies to maximize customer retention and value</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Retail & E-Commerce/re4.jpg" alt="Customer Analytics">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing & Revenue Optimization -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">Revenue Optimization</h2>
+          <h1 class="mercedes-title">Dynamic pricing strategies</h1>
+          <p class="mercedes-description">
+            Implement intelligent pricing strategies that respond to market conditions, competitor actions, and customer demand to maximize revenue while maintaining competitive positioning.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Dynamic Pricing</div>
+              <div class="mercedes-feature-text">Real-time price optimization based on market conditions</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Competitor Analysis</div>
+              <div class="mercedes-feature-text">Automated monitoring and competitive intelligence</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Promotion Optimization</div>
+              <div class="mercedes-feature-text">Strategic discount and campaign management</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Retail & E-Commerce/re5.jpg" alt="Pricing Optimization">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile Commerce -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid reverse">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">Mobile Commerce</h2>
+          <h1 class="mercedes-title">Optimized mobile experiences</h1>
+          <p class="mercedes-description">
+            Enhance mobile shopping experiences with responsive design, fast loading times, and intuitive navigation that converts mobile visitors into loyal customers.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Mobile Optimization</div>
+              <div class="mercedes-feature-text">Fast, responsive mobile shopping experiences</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">App Performance</div>
+              <div class="mercedes-feature-text">Native app optimization and user engagement</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Payment Integration</div>
+              <div class="mercedes-feature-text">Seamless mobile payment solutions</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Retail & E-Commerce/re6.jpg" alt="Mobile Commerce">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketplace Optimization -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">Marketplace Excellence</h2>
+          <h1 class="mercedes-title">Multi-channel marketplace success</h1>
+          <p class="mercedes-description">
+            Optimize your presence across multiple marketplaces with intelligent listing management, competitive pricing, and automated inventory synchronization.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Listing Optimization</div>
+              <div class="mercedes-feature-text">SEO-optimized product listings and descriptions</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Multi-channel Management</div>
+              <div class="mercedes-feature-text">Centralized control across all selling platforms</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Performance Tracking</div>
+              <div class="mercedes-feature-text">Comprehensive analytics across all channels</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Retail & E-Commerce/re7.jpg" alt="Marketplace Optimization">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future of Retail -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid reverse">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">Future-Ready Retail</h2>
+          <h1 class="mercedes-title">Next-generation retail solutions</h1>
+          <p class="mercedes-description">
+            Prepare for the future of retail with AI-powered solutions, augmented reality experiences, and innovative technologies that create competitive advantages in the evolving marketplace.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">AI Integration</div>
+              <div class="mercedes-feature-text">Machine learning for predictive insights</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Emerging Technologies</div>
+              <div class="mercedes-feature-text">AR/VR and immersive shopping experiences</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Innovation Strategy</div>
+              <div class="mercedes-feature-text">Future-proofing your retail operations</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Retail & E-Commerce/re8.jpg" alt="Future of Retail">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdowns = document.querySelectorAll('.dropdown');
+      
+      dropdowns.forEach(dropdown => {
+        const trigger = dropdown.querySelector('.nav-link');
+        const content = dropdown.querySelector('.dropdown-content');
+        
+        trigger.addEventListener('mouseenter', () => {
+          content.style.display = 'block';
+          setTimeout(() => {
+            content.style.opacity = '1';
+            content.style.transform = 'translateY(0)';
+          }, 10);
+        });
+        
+        dropdown.addEventListener('mouseleave', () => {
+          content.style.opacity = '0';
+          content.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            content.style.display = 'none';
+          }, 300);
+        });
+      });
+    });
+  </script>
+
+  <!-- Centralized Navigation JavaScript -->
+  <script src="js/navigation.js"></script>
+</body>
+</html>

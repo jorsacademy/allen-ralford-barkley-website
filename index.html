@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Allen Ralford Barkley</title>
+  <title>Allen Ralford Barkley - Advanced Business Optimization Solutions</title>
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; script-src 'self' 'unsafe-inline';">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Centralized Navigation CSS -->
+  <link rel="stylesheet" href="css/navigation.css">
   <style>
     /* Animations */
     @keyframes fadeIn {
@@ -97,6 +105,7 @@
       color: var(--white);
       color: var(--silver);
       line-height: 1.6;
+      padding-top: 120px; /* Account for fixed navigation */
     }
     
     h1, h2, h3, h4, h5, h6 {
@@ -236,6 +245,113 @@
     
     .submenu-link:hover .dot {
       background-color: #FFFFFF;
+    }
+    
+    /* COMPLETE DROPDOWN SYSTEM - Fixed all CSS issues */
+    .dropdown,
+    .products-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content,
+    .products-dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 250px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1000;
+      border-radius: 8px;
+      padding: 8px 0;
+      margin-top: 5px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      left: 0;
+    }
+    
+    /* CRITICAL: Override ALL inline styles for dropdown items */
+    .dropdown-content a,
+    .products-dropdown-content a {
+      color: var(--blue-darkest) !important;
+      padding: 12px 16px !important;
+      text-decoration: none !important;
+      display: block !important;
+      font-size: 14px !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      border-radius: 4px !important;
+      margin: 2px 8px !important;
+    }
+    
+    /* CRITICAL: Hover effects with high specificity */
+    .dropdown-content a:hover,
+    .products-dropdown-content a:hover,
+    .dropdown-content a:focus,
+    .products-dropdown-content a:focus {
+      background-color: #f1f5f9 !important;
+      cursor: pointer !important;
+      transform: translateX(2px) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Ensure pointer cursor for all dropdown triggers */
+    .dropdown .nav-link,
+    .products-dropdown .products-nav-link {
+      cursor: pointer !important;
+      user-select: none;
+    }
+    
+    /* MOBILE RESPONSIVE DROPDOWN FIXES */
+    @media (max-width: 768px) {
+      .dropdown-content,
+      .products-dropdown-content {
+        min-width: 200px;
+        left: -50px;
+        right: auto;
+      }
+      
+      .dropdown-content a,
+      .products-dropdown-content a {
+        padding: 14px 16px !important;
+        font-size: 16px !important;
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+      }
+      
+      .nav-links {
+        gap: 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .dropdown-content,
+      .products-dropdown-content {
+        min-width: 180px;
+        left: -75px;
+      }
+      
+      .dropdown-content a,
+      .products-dropdown-content a {
+        padding: 16px 12px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+    }
+    
+    /* ACCESSIBILITY IMPROVEMENTS */
+    .dropdown .nav-link:focus,
+    .products-dropdown .products-nav-link:focus {
+      outline: 2px solid #ffffff;
+      outline-offset: 2px;
+    }
+    
+    .dropdown-content a:focus,
+    .products-dropdown-content a:focus {
+      outline: 2px solid var(--blue-darkest);
+      outline-offset: -2px;
     }
     
     /* Hero Section */
@@ -571,41 +687,41 @@
     <!-- Top Black Header with Mercedes-style dropdown -->
     <div class="bg-black py-3">
       <div class="container navbar-container">
-        <a href="#" class="logo"><img src="assets/logo.jpg" alt="Allen Ralford Barkley Logo" style="height: 40px; margin-right: 10px;"> Allen Ralford Barkley</a>
+        <a href="index.html" class="logo"><img src="assets/logo.jpg" alt="Allen Ralford Barkley Logo" style="height: 40px; margin-right: 10px;"> Allen Ralford Barkley</a>
         <div class="nav-links">
-          <a href="#hero" class="nav-link" style="color: white; font-weight: 500;">Home</a>
+          <a href="index.html" class="nav-link" style="color: white; font-weight: 500; text-decoration: none;">Home</a>
           <div class="dropdown" style="position: relative; display: inline-block;">
-            <a href="#industries" class="nav-link" style="color: white; font-weight: 500;">Industries</a>
+            <a href="#" class="nav-link" style="color: white; font-weight: 500; text-decoration: none;">Industries</a>
             <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; border-radius: 4px; padding: 10px 0; margin-top: 5px; opacity: 0; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease;">
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Manufacturing</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Logistics & Supply Chain</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Retail & E-commerce</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Healthcare</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Energy & Utilities</a>
+              <a href="manufacturing.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Manufacturing</a>
+              <a href="supply-chain-logistics.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Logistics & Supply Chain</a>
+              <a href="retail-ecommerce.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Retail & E-commerce</a>
+              <a href="automotive.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Automotive</a>
+              <a href="food-beverage.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Food & Beverage</a>
+              <a href="chemical-process-industries.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Chemical & Process Industries</a>
+              <a href="consumer-electronics-appliances.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Consumer Electronics & Appliances</a>
+              <a href="metal-machinery.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Metal & Machinery</a>
+              <a href="energy-utilities.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Energy & Utilities</a>
             </div>
           </div>
           <div class="dropdown" style="position: relative; display: inline-block;">
-            <a href="model-to-impact.html" class="nav-link" style="color: white; font-weight: 500;">Solutions</a>
+            <a href="#" class="nav-link" style="color: white; font-weight: 500; text-decoration: none;">Solutions</a>
             <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; border-radius: 4px; padding: 10px 0; margin-top: 5px; opacity: 0; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease;">
-              <a href="model-to-impact.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">From Model to Impact</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Model-Based Decision Support</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">AI-Driven Forecasting</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Simulation & Digital Twins</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Prescriptive Analytics</a>
+              <a href="manufacturing-excellence.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Manufacturing Excellence</a>
+              <a href="supply-chain-intelligence.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Supply Chain Intelligence</a>
+              <a href="digital-operations.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Digital Operations</a>
             </div>
           </div>
           <div class="dropdown" style="position: relative; display: inline-block;">
-            <a href="optimization-solutions.html" class="nav-link" style="color: white; font-weight: 500;">Services</a>
+            <a href="#" class="nav-link" style="color: white; font-weight: 500; text-decoration: none;">Services</a>
             <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; border-radius: 4px; padding: 10px 0; margin-top: 5px; opacity: 0; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease;">
-              <a href="optimization-solutions.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Optimization Solutions</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Decision Support Optimization</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Analytics as a Service</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Technical Training</a>
-              <a href="#" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">Implementation Support</a>
+              <a href="strategy-consulting.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Strategy & Consulting</a>
+              <a href="implementation-delivery.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Implementation & Delivery</a>
+              <a href="analytics-intelligence.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; cursor: pointer;">Analytics & Intelligence</a>
             </div>
           </div>
-          <a href="#about" class="nav-link" style="color: white; font-weight: 500;">About</a>
-          <a href="#contact" class="nav-link" style="color: white; font-weight: 500;">Contact</a>
+          <a href="about.html" class="nav-link" style="color: white; font-weight: 500; text-decoration: none;">About</a>
+          <a href="contact.html" class="nav-link" style="color: white; font-weight: 500; text-decoration: none;">Contact</a>
         </div>
       </div>
     </div>
@@ -613,14 +729,18 @@
     <div style="background-color: #0A1A8F; padding: 10px 0;">
       <div class="container navbar-container" style="display: flex; justify-content: center;">
         <div class="nav-links" style="display: flex; justify-content: center; width: 100%;">
-          <a href="courses.html" class="nav-link" style="color: white; font-weight: 400;">Courses</a>
-          <div class="dropdown" style="position: relative;">
-            <a href="#products" class="nav-link" style="color: white; font-weight: 400;">Products</a>
-            <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; border-radius: 4px; top: 100%; left: 0;">
-              <a href="sharpforte.html" style="color: var(--blue-darkest); padding: 12px 16px; text-decoration: none; display: block; font-size: 14px;">SharpForte</a>
+          <a href="#courses" class="nav-link" style="color: white; font-weight: 400; text-decoration: none;">Courses</a>
+          <div class="products-dropdown" style="position: relative;">
+            <a href="#" class="products-nav-link" style="color: white; font-weight: 400; cursor: pointer; text-decoration: none;">Products</a>
+            <div class="products-dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1000; border-radius: 8px; top: 100%; left: 0; padding: 8px 0; margin-top: 5px; opacity: 0; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease;">
+              <a href="sharpforte.html" style="color: var(--blue-darkest); padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease; border-radius: 4px; margin: 0 8px;">SharpForte</a>
+              <a href="dyntello.html" style="color: var(--blue-darkest); padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease; border-radius: 4px; margin: 0 8px;">Dyntello</a>
+              <a href="routearchon.html" style="color: var(--blue-darkest); padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease; border-radius: 4px; margin: 0 8px;">RouteArchon</a>
+              <a href="schedcortex.html" style="color: var(--blue-darkest); padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease; border-radius: 4px; margin: 0 8px;">SchedCortex</a>
+              <a href="manufactron.html" style="color: var(--blue-darkest); padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease; border-radius: 4px; margin: 0 8px;">MANUFACTRON</a>
             </div>
           </div>
-          <a href="#" class="btn-blue" style="background-color: rgba(255,255,255,0.2); color: white; padding: 6px 16px; border-radius: 4px; font-size: 14px; font-weight: 500;">Book Discovery Call</a>
+          <a href="#" onclick="window.open('https://calendly.com/your-link', '_blank')" class="btn-blue" style="background-color: rgba(255,255,255,0.2); color: white; padding: 6px 16px; border-radius: 4px; font-size: 14px; font-weight: 500; text-decoration: none;">Book Discovery Call</a>
         </div>
       </div>
     </div>
@@ -810,53 +930,69 @@
     </div>
   </section>
 
-  <!-- Image Gallery Section -->
-  <section class="gallery" id="gallery" style="background-color: var(--black); padding: 80px 0;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-      <h2 class="section-title" style="color: var(--white); font-size: 2.5rem; margin-bottom: 50px; text-align: center; font-family: 'Playfair Display', serif; font-weight: 300;">Featured Projects</h2>
+  <!-- What We Offer Section - True Mercedes Style -->
+  <section class="what-we-offer" id="gallery" style="background: linear-gradient(135deg, var(--blue-darkest) 0%, var(--blue-dark) 100%); padding: 100px 0; position: relative;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative;">
       
-      <!-- Digital Transformation - First panel -->
-      <div style="margin-bottom: 20px;">
-        <div style="position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 21/12;">
-          <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, var(--blue-darkest)); opacity: 0.7; z-index: 1;"></div>
-          <img src="assets/foto7.png" alt="Digital Technology" style="width: 100%; height: 100%; object-fit: cover;">
-          <div style="position: absolute; bottom: 10px; left: 10px; padding: 20px; z-index: 2; width: 100%;">
-            <h3 class="text-white text-xl font-medium">Digital Transformation</h3>
-            <p class="text-white/80">Maximize profit with Allen Ralford Barkley</p>
+      <!-- Mercedes-Style Header -->
+      <div style="text-align: left; margin-bottom: 80px; max-width: 500px;">
+        <h2 style="color: var(--white); font-size: 3rem; margin-bottom: 30px; font-family: 'Playfair Display', serif; font-weight: 300; letter-spacing: -0.02em; line-height: 1.1;">What We Offer</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.6; font-weight: 300;">Excellence in optimization, delivered with precision and innovation</p>
+      </div>
+      
+      <!-- Mercedes-Style Simple Grid -->
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 60px;">
+        
+        <!-- First Image - Advanced Analytics -->
+        <div style="position: relative; overflow: hidden; height: 300px; background: #000; border-radius: 4px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="assets/foto7.png" alt="Advanced Analytics" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; transition: transform 0.3s ease;">
+          <!-- Minimal Clean Overlay -->
+          <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 70%);"></div>
+          <!-- Clean Typography -->
+          <div style="position: absolute; bottom: 30px; left: 30px; right: 30px;">
+            <h3 style="color: white; font-size: 1.3rem; font-family: 'Playfair Display', serif; font-weight: 400; margin-bottom: 8px; text-shadow: 0 2px 10px rgba(0,0,0,0.7);">Advanced Analytics</h3>
+            <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem; font-weight: 300; line-height: 1.3; text-shadow: 0 1px 5px rgba(0,0,0,0.7);">Data-driven insights for strategic decisions</p>
           </div>
+        </div>
+        
+        <!-- Second Image - Optimization Solutions -->
+        <div style="position: relative; overflow: hidden; height: 300px; background: #000; border-radius: 4px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="assets/foto8.png" alt="Optimization Solutions" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; transition: transform 0.3s ease;">
+          <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 70%);"></div>
+          <div style="position: absolute; bottom: 30px; left: 30px; right: 30px;">
+            <h3 style="color: white; font-size: 1.3rem; font-family: 'Playfair Display', serif; font-weight: 400; margin-bottom: 8px; text-shadow: 0 2px 10px rgba(0,0,0,0.7);">Optimization Solutions</h3>
+            <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem; font-weight: 300; line-height: 1.3; text-shadow: 0 1px 5px rgba(0,0,0,0.7);">Intelligent resource allocation</p>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Mercedes-Style Brand Statement -->
+      <div style="text-align: center; padding: 40px 0;">
+        <div style="max-width: 700px; margin: 0 auto;">
+          <h3 style="color: var(--white); font-size: 2rem; font-family: 'Playfair Display', serif; font-weight: 300; margin-bottom: 20px; letter-spacing: -0.01em;">Allen Ralford Barkley</h3>
+          <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; font-weight: 300;">Where precision meets innovation. We transform complex operational challenges into efficient solutions that drive measurable business outcomes.</p>
         </div>
       </div>
       
-      <!-- Intelligent Finance - Second panel -->
-      <div style="margin-bottom: 20px;">
-        <div style="position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 21/10;">
-          <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, var(--blue-darkest)); opacity: 0.7; z-index: 1;"></div>
-          <img src="assets/foto8.png" alt="Technology Interface" style="width: 100%; height: 100%; object-fit: cover;">
-          <div style="position: absolute; bottom: 10px; left: 10px; padding: 20px; z-index: 2; width: 100%;">
-            <h3 class="text-white text-xl font-medium">Intelligent Finance</h3>
-            <p class="text-white/80">With Allen Ralford Barkley</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Global Solutions - Third panel -->
-      <div style="margin-bottom: 20px;">
-        <div style="position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 21/12;">
-          <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, var(--blue-darkest)); opacity: 0.7; z-index: 1;"></div>
-          <img src="assets/sco.png" alt="Global Technology" style="width: 100%; height: 100%; object-fit: cover;">
-          <div style="position: absolute; bottom: 10px; left: 10px; padding: 20px; z-index: 2; width: 100%;">
-            <h3 class="text-white text-xl font-medium">Global Solutions</h3>
-
-          </div>
-        </div>
-      </div>
-      
-      <!-- Logo Banner -->
-      <div style="background: linear-gradient(to right, var(--blue-darkest), var(--blue-medium), var(--azure)); border-radius: 8px; padding: 40px; text-align: center; margin-bottom: 40px;">
-        <h2 class="text-white text-3xl font-playfair">Allen Ralford Barkley</h2>
-        <p class="text-white/90 mt-2">Optimize Intelligently. Act Precisely.</p>
-      </div>
     </div>
+
+    <!-- Responsive Design -->
+    <style>
+      @media (max-width: 768px) {
+        .what-we-offer .container > div:nth-child(2) > div {
+          grid-template-columns: 1fr !important;
+          gap: 20px !important;
+        }
+        .what-we-offer h2 {
+          font-size: 2.2rem !important;
+        }
+        .what-we-offer .container > div:first-child {
+          text-align: center !important;
+          max-width: none !important;
+        }
+      }
+    </style>
   </section>
   
   <!-- About Section -->
@@ -867,7 +1003,6 @@
           <h2 class="text-white text-3xl font-playfair mb-6">About Allen Ralford Barkley</h2>
           <p class="text-white mb-4">Allen Ralford Barkley has been at the forefront of optimization and analytics, delivering exceptional results for prestigious clients worldwide.</p>
           <p class="text-white mb-6">With a unique blend of technical expertise and strategic insight, we transform complex data challenges into elegant, efficient solutions that drive measurable business outcomes.</p>
-          <a href="#" class="btn-outline" style="border-color: var(--azure-light); color: var(--white);">Learn More</a>
         </div>
         <div class="about-image">
           <img src="assets/foto10.png" alt="Allen Ralford Barkley" class="rounded-image" style="border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);">
@@ -896,7 +1031,7 @@
         <!-- Course 1 -->
         <div style="background-color: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; transition: transform 0.3s ease;">
           <div style="position: relative; height: 180px; overflow: hidden;">
-            <img src="assets/foto11.png" alt="Advanced Optimization Techniques" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="assets/foto2.jpg" alt="Advanced Optimization Techniques" style="width: 100%; height: 100%; object-fit: cover;">
             <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
             <div style="position: absolute; bottom: 10px; left: 15px; display: flex; gap: 8px;">
               <span style="background-color: var(--blue-medium); color: var(--white); padding: 4px 8px; border-radius: 4px; font-size: 12px;">Optimization</span>
@@ -925,7 +1060,7 @@
         <!-- Course 2 -->
         <div style="background-color: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; transition: transform 0.3s ease;">
           <div style="position: relative; height: 180px; overflow: hidden;">
-            <img src="assets/foto12.png" alt="Machine Learning Fundamentals" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="assets/foto17.jpg" alt="Machine Learning Fundamentals" style="width: 100%; height: 100%; object-fit: cover;">
             <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
             <div style="position: absolute; bottom: 10px; left: 15px; display: flex; gap: 8px;">
               <span style="background-color: var(--blue-medium); color: var(--white); padding: 4px 8px; border-radius: 4px; font-size: 12px;">Machine Learning</span>
@@ -954,7 +1089,7 @@
         <!-- Course 3 -->
         <div style="background-color: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; transition: transform 0.3s ease;">
           <div style="position: relative; height: 180px; overflow: hidden;">
-            <img src="assets/foto13.png" alt="Data Science for Business" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="assets/foto18.jpg" alt="Data Science for Business" style="width: 100%; height: 100%; object-fit: cover;">
             <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
             <div style="position: absolute; bottom: 10px; left: 15px; display: flex; gap: 8px;">
               <span style="background-color: var(--blue-medium); color: var(--white); padding: 4px 8px; border-radius: 4px; font-size: 12px;">Data Science</span>
@@ -983,74 +1118,78 @@
     </div>
   </section>
   
-  <!-- Products Section -->
-  <section id="products" style="background: linear-gradient(to right, var(--blue-medium), var(--blue-dark)); padding: 80px 0;">
-    <div class="container">
-      <h2 class="text-white text-center text-3xl font-playfair mb-12">Premium Products</h2>
+  <!-- Premium Products Section - Mercedes Style -->
+  <section id="products" style="background: linear-gradient(135deg, #284CAA 0%, #10339C 15%, #032694 30%, #03238A 45%, #041D76 60%, #04196A 75%, #06155D 85%, #070F47 100%); padding: 120px 0; position: relative;">
+    
+    <div class="container" style="position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+      <!-- Mercedes-Style Header -->
+      <div style="text-align: left; margin-bottom: 80px; max-width: 600px;">
+        <h2 style="color: var(--white); font-size: 3rem; margin-bottom: 30px; font-family: 'Playfair Display', serif; font-weight: 300; letter-spacing: -0.02em; line-height: 1.1;">Premium Products</h2>
+        <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; line-height: 1.6; font-weight: 300;">Cutting-edge optimization solutions that transform your operations</p>
+      </div>
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
+      <!-- Mercedes-Style Product Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px;">
+        
         <!-- Product 1: SharpForte -->
-        <div style="background-color: rgba(0,0,0,0.2); border-radius: 8px; overflow: hidden; transition: transform 0.3s ease;">
-          <div style="position: relative; height: 200px; overflow: hidden;">
-            <img src="assets/images/sharpforte1.png" alt="SharpForte - Cutting Stock Optimization" style="width: 100%; height: 100%; object-fit: cover;">
-            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);"></div>
-          </div>
-          <div style="padding: 20px;">
-            <h3 class="text-white text-xl mb-2">SharpForte</h3>
-            <p class="text-white/80 mb-4">Advanced cutting stock optimization for manufacturing, construction, and industrial applications.</p>
-            <div style="display: flex; justify-content: flex-end; align-items: center;">
-              <a href="sharpforte.html" class="btn-blue" style="background-color: var(--azure); color: var(--white); padding: 8px 16px; border-radius: 4px; text-decoration: none;">Learn More</a>
-            </div>
-          </div>
+        <div style="background: rgba(255,255,255,0.08); border-radius: 8px; padding: 40px; transition: all 0.3s ease; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,255,255,0.12)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'">
+          <h3 style="color: white; font-size: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 400; margin-bottom: 15px;">SharpForte</h3>
+          <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.5; font-weight: 300;">Advanced cutting stock optimization platform that minimizes material waste across 1D, 2D, and nesting applications.</p>
         </div>
         
-        <!-- Product 2 -->
-        <div style="background-color: rgba(0,0,0,0.2); border-radius: 8px; overflow: hidden; transition: transform 0.3s ease;">
-          <div style="position: relative; height: 200px; overflow: hidden;">
-            <img src="assets/foto7.png" alt="Industry 4.0 Solutions" style="width: 100%; height: 100%; object-fit: cover;">
-            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);"></div>
-          </div>
-          <div style="padding: 20px;">
-            <h3 class="text-white text-xl mb-2">Industry 4.0 Solutions</h3>
-            <p class="text-white/80 mb-4">Smart manufacturing technologies with IoT integration, digital twins, and predictive maintenance.</p>
-            <div style="display: flex; justify-content: flex-end; align-items: center;">
-              <a href="#" class="btn-blue" style="background-color: var(--azure); color: var(--white); padding: 8px 16px; border-radius: 4px; text-decoration: none;">Learn More</a>
-            </div>
-          </div>
+        <!-- Product 2: SchedCortex -->
+        <div style="background: rgba(255,255,255,0.08); border-radius: 8px; padding: 40px; transition: all 0.3s ease; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,255,255,0.12)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'">
+          <h3 style="color: white; font-size: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 400; margin-bottom: 15px;">SchedCortex</h3>
+          <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.5; font-weight: 300;">Intelligent production scheduling platform that optimizes manufacturing workflows and maximizes throughput.</p>
         </div>
         
-        <!-- Product 3 -->
-        <div style="background-color: rgba(0,0,0,0.2); border-radius: 8px; overflow: hidden; transition: transform 0.3s ease;">
-          <div style="position: relative; height: 200px; overflow: hidden;">
-            <img src="assets/foto8.png" alt="Management Consulting" style="width: 100%; height: 100%; object-fit: cover;">
-            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);"></div>
-          </div>
-          <div style="padding: 20px;">
-            <h3 class="text-white text-xl mb-2">Management Consulting</h3>
-            <p class="text-white/80 mb-4">Strategic business transformation services with focus on operational excellence and process optimization.</p>
-            <div style="display: flex; justify-content: flex-end; align-items: center;">
-              <a href="#" class="btn-blue" style="background-color: var(--azure); color: var(--white); padding: 8px 16px; border-radius: 4px; text-decoration: none;">Learn More</a>
-            </div>
-          </div>
+        <!-- Product 3: RouteArchon -->
+        <div style="background: rgba(255,255,255,0.08); border-radius: 8px; padding: 40px; transition: all 0.3s ease; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,255,255,0.12)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'">
+          <h3 style="color: white; font-size: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 400; margin-bottom: 15px;">RouteArchon</h3>
+          <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.5; font-weight: 300;">Comprehensive fleet management solution with route optimization and real-time vehicle tracking.</p>
+        </div>
+        
+        <!-- Product 4: MANUFACTRON -->
+        <div style="background: rgba(255,255,255,0.08); border-radius: 8px; padding: 40px; transition: all 0.3s ease; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,255,255,0.12)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'">
+          <h3 style="color: white; font-size: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 400; margin-bottom: 15px;">MANUFACTRON</h3>
+          <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.5; font-weight: 300;">Revolutionary line configuration optimization platform with AI-driven line balancing and resource allocation.</p>
+        </div>
+        
+        <!-- Product 5: Dyntello -->
+        <div style="background: rgba(255,255,255,0.08); border-radius: 8px; padding: 40px; transition: all 0.3s ease; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,255,255,0.12)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'">
+          <h3 style="color: white; font-size: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 400; margin-bottom: 15px;">Dyntello</h3>
+          <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.5; font-weight: 300;">Dynamic safety stock optimization system with real-time demand sensing and supply chain risk assessment.</p>
         </div>
       </div>
       
-      <!-- Featured Product Banner -->
-      <div style="margin-top: 60px; background: linear-gradient(to right, var(--blue-darkest), var(--blue-darker)); border-radius: 12px; overflow: hidden;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr;">
-          <div style="padding: 40px; display: flex; flex-direction: column; justify-content: center;">
-            <h3 class="text-white text-2xl font-playfair mb-4">Process Optimization Suite</h3>
-            <p class="text-white/90 mb-6">Our flagship product combines advanced analytics, optimization algorithms, and Industry 4.0 technologies to transform your supply chain operations.</p>
-            <!-- Button removed as requested -->
-          </div>
-          <div style="position: relative;">
-            <img src="assets/foto15.png" alt="Process Optimization Suite" style="width: 100%; height: 100%; object-fit: cover;">
-            <div style="position: absolute; inset: 0; background-color: var(--blue-medium); opacity: 0.3;"></div>
-          </div>
+      <!-- Mercedes-Style Brand Statement -->
+      <div style="text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.15);">
+        <div style="max-width: 700px; margin: 0 auto;">
+          <h3 style="color: var(--white); font-size: 1.8rem; font-family: 'Playfair Display', serif; font-weight: 300; margin-bottom: 20px;">Allen Ralford Barkley</h3>
+          <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; font-weight: 300;">Where precision meets innovation. We transform complex operational challenges into efficient solutions that drive measurable business outcomes.</p>
         </div>
       </div>
+      
     </div>
+
+    <!-- Responsive Design -->
+    <style>
+      @media (max-width: 768px) {
+        #products .container > div:first-child {
+          text-align: center !important;
+          max-width: none !important;
+        }
+        #products h2 {
+          font-size: 2.2rem !important;
+        }
+        #products > div > div:nth-child(2) > div {
+          grid-template-columns: 1fr !important;
+          gap: 20px !important;
+        }
+      }
+    </style>
   </section>
+
 
   <!-- Consulting Section -->
   <section id="consulting" style="background-color: var(--black); padding: 80px 0;">
@@ -1169,9 +1308,9 @@
         </div>
         
         <div class="footer-contact">
-          <a href="mailto:contact@allenralfordbarkley.com">contact@allenralfordbarkley.com</a>
+          <a href="mailto:info@allenralfordbarkey.com">info@allenralfordbarkey.com</a>
           <div class="social-icons" style="margin-top: 15px;">
-            <a href="#" class="social-icon">
+            <a href="https://www.linkedin.com/company/allen-ralford-barkley" class="social-icon" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
@@ -1182,13 +1321,13 @@
       
       <div class="footer-bottom" style="text-align: center; padding: 0 30px;">
         <div class="footer-links" style="display: flex; justify-content: center; gap: 30px; margin-bottom: 15px;">
-          <a href="#" class="footer-link">Privacy Policy</a>
-          <a href="#" class="footer-link">Terms of Service</a>
-          <a href="#" class="footer-link">Cookie Policy</a>
-          <a href="#" class="footer-link">GDPR</a>
+          <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+          <a href="terms-of-service.html" class="footer-link">Terms of Service</a>
+          <a href="cookie-policy.html" class="footer-link">Cookie Policy</a>
+          <a href="gdpr.html" class="footer-link">GDPR</a>
         </div>
         <div class="copyright">
-          © 2025 Allen Ralford Barkley. All rights reserved.
+          2025 Allen Ralford Barkley. All rights reserved.
         </div>
       </div>
     </div>
@@ -1284,29 +1423,222 @@
     // Initialize particles when the page loads
     window.addEventListener('load', createParticles);
     
-    // Mercedes-style dropdown menu functionality
+    // PROFESSIONAL DROPDOWN SYSTEM - Fixed ALL issues (mobile, touch, accessibility)
     document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.dropdown-toggle').forEach(dropdownToggle => {
-        dropdownToggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          this.nextElementSibling.classList.toggle('show');
-        });
-      });
+      let activeDropdown = null;
+      let touchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       
-      document.querySelectorAll('.dropdown').forEach(dropdown => {
-        dropdown.addEventListener('mouseenter', function() {
-          this.querySelector('.dropdown-content').style.display = 'block';
+      // Initialize complete dropdown system
+      function initializeDropdowns() {
+        // Get all dropdown elements
+        const dropdowns = document.querySelectorAll('.dropdown, .products-dropdown');
+        
+        dropdowns.forEach(function(dropdown) {
+          const trigger = dropdown.querySelector('.nav-link, .products-nav-link');
+          const content = dropdown.querySelector('.dropdown-content, .products-dropdown-content');
+          
+          if (!trigger || !content) return;
+          
+          // Add click/touch event with proper handling
+          trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            handleDropdownToggle(content);
+          });
+          
+          // Touch support for mobile devices
+          if (touchDevice) {
+            trigger.addEventListener('touchstart', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              handleDropdownToggle(content);
+            }, { passive: false });
+          }
+          
+          // Keyboard accessibility
+          trigger.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleDropdownToggle(content);
+            } else if (e.key === 'Escape' && activeDropdown === content) {
+              closeDropdown(content);
+              trigger.focus();
+            }
+          });
+          
+          // Make trigger focusable
+          trigger.setAttribute('tabindex', '0');
+          trigger.setAttribute('role', 'button');
+          trigger.setAttribute('aria-haspopup', 'true');
+          trigger.setAttribute('aria-expanded', 'false');
+          
+          // Prevent dropdown from closing when clicking inside
+          content.addEventListener('click', function(e) {
+            e.stopPropagation();
+          });
+          
+          // Touch support for dropdown content
+          if (touchDevice) {
+            content.addEventListener('touchstart', function(e) {
+              e.stopPropagation();
+            });
+          }
+          
+          // Add keyboard navigation within dropdown
+          const links = content.querySelectorAll('a');
+          links.forEach(function(link, index) {
+            link.addEventListener('keydown', function(e) {
+              if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                const nextLink = links[index + 1] || links[0];
+                nextLink.focus();
+              } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prevLink = links[index - 1] || links[links.length - 1];
+                prevLink.focus();
+              } else if (e.key === 'Escape') {
+                e.preventDefault();
+                closeDropdown(content);
+                trigger.focus();
+              }
+            });
+          });
         });
         
-        dropdown.addEventListener('mouseleave', function() {
-          const dropdownContent = this.querySelector('.dropdown-content');
-          dropdownContent.style.opacity = '0';
-          dropdownContent.style.transform = 'translateY(-10px)';
-          setTimeout(() => {
-            dropdownContent.style.display = 'none';
-          }, 300);
+        // Close dropdown when clicking/touching outside
+        document.addEventListener('click', handleOutsideClick);
+        if (touchDevice) {
+          document.addEventListener('touchstart', handleOutsideClick);
+        }
+        
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && activeDropdown) {
+            const trigger = activeDropdown.closest('.dropdown, .products-dropdown').querySelector('.nav-link, .products-nav-link');
+            closeDropdown(activeDropdown);
+            if (trigger) trigger.focus();
+          }
         });
-      });
+      }
+      
+      // Handle dropdown toggle logic
+      function handleDropdownToggle(content) {
+        if (activeDropdown && activeDropdown !== content) {
+          closeDropdown(activeDropdown);
+        }
+        
+        if (activeDropdown === content) {
+          closeDropdown(content);
+        } else {
+          openDropdown(content);
+        }
+      }
+      
+      // Handle outside clicks/touches
+      function handleOutsideClick(e) {
+        if (activeDropdown && !activeDropdown.closest('.dropdown, .products-dropdown').contains(e.target)) {
+          closeDropdown(activeDropdown);
+        }
+      }
+      
+      // Open dropdown with smooth animation
+      function openDropdown(content) {
+        const trigger = content.closest('.dropdown, .products-dropdown').querySelector('.nav-link, .products-nav-link');
+        
+        content.style.display = 'block';
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(-10px)';
+        
+        // Use requestAnimationFrame for smooth animation
+        requestAnimationFrame(function() {
+          content.style.opacity = '1';
+          content.style.transform = 'translateY(0)';
+        });
+        
+        activeDropdown = content;
+        if (trigger) {
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      }
+      
+      // Close dropdown with smooth animation
+      function closeDropdown(content) {
+        const trigger = content.closest('.dropdown, .products-dropdown').querySelector('.nav-link, .products-nav-link');
+        
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(-10px)';
+        
+        setTimeout(function() {
+          content.style.display = 'none';
+        }, 300);
+        
+        activeDropdown = null;
+        if (trigger) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      }
+      
+      // Initialize the system
+      initializeDropdowns();
+      
+      // CRITICAL FIX: Ensure ALL dropdown items are clickable
+      function fixDropdownItemClickability() {
+        // Get all dropdown content containers
+        const allDropdownContents = document.querySelectorAll('.dropdown-content, .products-dropdown-content');
+        
+        allDropdownContents.forEach(function(content) {
+          // Get all links within this dropdown
+          const links = content.querySelectorAll('a');
+          
+          links.forEach(function(link, index) {
+            // Force cursor pointer style
+            link.style.cursor = 'pointer';
+            link.style.pointerEvents = 'auto';
+            
+            // Add explicit click event handler
+            link.addEventListener('click', function(e) {
+              // Don't prevent default if it's a real link
+              if (this.getAttribute('href') && this.getAttribute('href') !== '#') {
+                console.log('Navigating to:', this.getAttribute('href'));
+                // Allow normal navigation
+                closeDropdown(content);
+              } else {
+                e.preventDefault();
+                console.log('Clicked dropdown item:', this.textContent.trim());
+              }
+            });
+            
+            // Add touch support for mobile
+            link.addEventListener('touchend', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              if (this.getAttribute('href') && this.getAttribute('href') !== '#') {
+                console.log('Touch navigating to:', this.getAttribute('href'));
+                window.location.href = this.getAttribute('href');
+              } else {
+                console.log('Touch clicked dropdown item:', this.textContent.trim());
+              }
+              
+              closeDropdown(content);
+            });
+            
+            // Add hover effects
+            link.addEventListener('mouseenter', function() {
+              this.style.backgroundColor = '#f1f5f9';
+              this.style.transform = 'translateX(2px)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+              this.style.backgroundColor = '';
+              this.style.transform = '';
+            });
+          });
+        });
+      }
+      
+      // Apply the fix
+      fixDropdownItemClickability();
       
       // Section identification for navigation
       const sections = document.querySelectorAll('section[id]');
@@ -1442,6 +1774,10 @@
       // Show markers when moving the mouse
       document.addEventListener('mousemove', showMarkers);
     });
+
   </script>
+
+  <!-- Centralized Navigation JavaScript -->
+  <script src="js/navigation.js"></script>
 </body>
 </html>

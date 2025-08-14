@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Allen Ralford Barkley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https:;">
+  
+  <style>
+    :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --silver: #C0C0C0;
+      --blue-darkest: #070F47;
+      --blue-darker: #051765;
+      --blue-dark: #05165F;
+      --blue-medium: #1E3A8A;
+      --azure: #0080FF;
+      --azure-light: #40A0FF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--white);
+      background-color: var(--black);
+    }
+
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: var(--black);
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 30px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--azure);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--white);
+      min-width: 250px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 4px;
+      padding: 10px 0;
+      margin-top: 5px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .dropdown-content a {
+      color: var(--blue-darkest);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Blue Bar Navigation */
+    .blue-bar {
+      background: linear-gradient(135deg, var(--blue-darkest) 0%, var(--blue-dark) 50%, var(--blue-darker) 100%);
+      padding: 12px 0;
+      margin-top: 70px;
+    }
+
+    .blue-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .blue-nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .blue-nav a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--blue-darkest) 0%, var(--blue-dark) 50%, var(--blue-darker) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 3rem;
+      font-weight: 300;
+      line-height: 1.6;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* About Content Section */
+    .about-section {
+      background: linear-gradient(to right, var(--blue-darker), var(--blue-darkest));
+      padding: 80px 0;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--white);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .about-text p {
+      color: var(--white);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 12px 30px;
+      border: 2px solid var(--azure-light);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--azure-light);
+      color: var(--white);
+    }
+
+    /* Particle Effect */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 60px 0 30px;
+      text-align: center;
+    }
+
+    .footer-logo a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer p {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 20px 0;
+    }
+
+    .footer-contact a {
+      color: var(--azure);
+      text-decoration: none;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icon {
+      color: var(--white);
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: var(--azure);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-text h2 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Allen Ralford Barkley</a>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Industries</a>
+          <div class="dropdown-content">
+            <a href="manufacturing.html">Manufacturing</a>
+            <a href="automotive.html">Automotive</a>
+            <a href="food-beverage.html">Food & Beverage</a>
+            <a href="chemical-process-industries.html">Chemical & Process Industries</a>
+            <a href="consumer-electronics-appliances.html">Consumer Electronics & Appliances</a>
+            <a href="metal-machinery.html">Metal & Machinery</a>
+            <a href="retail-ecommerce.html">Retail & E-commerce</a>
+            <a href="energy-utilities.html">Energy & Utilities</a>
+            <a href="supply-chain-logistics.html">Supply Chain & Logistics</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Solutions</a>
+          <div class="dropdown-content">
+            <a href="manufacturing-excellence.html">Manufacturing Excellence</a>
+            <a href="supply-chain-intelligence.html">Supply Chain Intelligence</a>
+            <a href="digital-operations.html">Digital Operations</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Services</a>
+          <div class="dropdown-content">
+            <a href="strategy-consulting.html">Strategy & Consulting</a>
+            <a href="implementation-delivery.html">Implementation & Delivery</a>
+            <a href="analytics-intelligence.html">Analytics & Intelligence</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Blue Bar Navigation -->
+  <div class="blue-bar">
+    <div class="blue-nav">
+      <a href="courses.html">Courses</a>
+      <div class="products-dropdown" style="position: relative;">
+        <a href="#" class="products-nav-link" style="color: white; font-weight: 400; cursor: pointer; text-decoration: none;">Products</a>
+        <div class="products-dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1000; border-radius: 8px; top: 100%; left: 0; padding: 8px 0; margin-top: 5px; opacity: 0; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease;">
+          <a href="sharpforte.html" style="color: var(--blue-darkest); padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease; border-radius: 4px; margin: 0 8px;">SharpForte</a>
+          <a href="dyntello.html" style="color: var(--blue-darkest); padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease; border-radius: 4px; margin: 0 8px;">Dyntello</a>
+          <a href="routearchon.html" style="color: var(--blue-darkest); padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease; border-radius: 4px; margin: 0 8px;">RouteArchon</a>
+          <a href="schedcortex.html" style="color: var(--blue-darkest); padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease; border-radius: 4px; margin: 0 8px;">SchedCortex</a>
+          <a href="manufactron.html" style="color: var(--blue-darkest); padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease; border-radius: 4px; margin: 0 8px;">MANUFACTRON</a>
+        </div>
+      </div>
+      <a href="#" onclick="window.open('https://calendly.com/your-link', '_blank')" style="background-color: var(--azure); padding: 10px 20px; border-radius: 4px;">Book Discovery Call</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Particle Effect -->
+    <div class="particles">
+      <div class="particle" style="left: 10%; top: 20%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+      <div class="particle" style="left: 20%; top: 80%; width: 6px; height: 6px; animation-delay: 1s;"></div>
+      <div class="particle" style="left: 60%; top: 30%; width: 3px; height: 3px; animation-delay: 2s;"></div>
+      <div class="particle" style="left: 80%; top: 70%; width: 5px; height: 5px; animation-delay: 3s;"></div>
+      <div class="particle" style="left: 30%; top: 50%; width: 4px; height: 4px; animation-delay: 4s;"></div>
+      <div class="particle" style="left: 70%; top: 10%; width: 6px; height: 6px; animation-delay: 5s;"></div>
+    </div>
+
+    <div class="hero-content">
+      <h1>About Allen Ralford Barkley</h1>
+      <p>Delivering exceptional optimization and analytics solutions for prestigious clients worldwide</p>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="var(--silver)">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- About Content Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About Allen Ralford Barkley</h2>
+          <p>Allen Ralford Barkley has been at the forefront of optimization and analytics, delivering exceptional results for prestigious clients worldwide.</p>
+          <p>With a unique blend of technical expertise and strategic insight, we transform complex data challenges into elegant, efficient solutions that drive measurable business outcomes.</p>
+          <p>Our approach combines AI-driven modeling with years of hands-on experience to help organizations make faster, better-informed decisions—without losing touch with reality on the ground.</p>
+          <a href="contact.html" class="btn-outline">Get In Touch</a>
+        </div>
+        <div class="about-image">
+          <img src="assets/foto10.png" alt="Allen Ralford Barkley" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <a href="index.html">Allen Ralford Barkley</a>
+      </div>
+      <p>Optimize Intelligently. Act Precisely.</p>
+      <div class="footer-contact">
+        <a href="mailto:info@allenralfordbarkey.com">info@allenralfordbarkey.com</a>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/company/allen-ralford-barkley" class="social-icon" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdowns = document.querySelectorAll('.dropdown');
+      
+      dropdowns.forEach(dropdown => {
+        const dropdownContent = dropdown.querySelector('.dropdown-content');
+        
+        dropdown.addEventListener('mouseenter', () => {
+          dropdownContent.style.display = 'block';
+          setTimeout(() => {
+            dropdownContent.style.opacity = '1';
+            dropdownContent.style.transform = 'translateY(0)';
+          }, 10);
+        });
+        
+        dropdown.addEventListener('mouseleave', () => {
+          dropdownContent.style.opacity = '0';
+          dropdownContent.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            dropdownContent.style.display = 'none';
+          }, 300);
+        });
+      });
+
+      // Products dropdown functionality
+      const productsDropdown = document.querySelector('.products-dropdown');
+      if (productsDropdown) {
+        const productsDropdownContent = productsDropdown.querySelector('.products-dropdown-content');
+        
+        productsDropdown.addEventListener('mouseenter', () => {
+          productsDropdownContent.style.display = 'block';
+          setTimeout(() => {
+            productsDropdownContent.style.opacity = '1';
+            productsDropdownContent.style.transform = 'translateY(0)';
+          }, 10);
+        });
+        
+        productsDropdown.addEventListener('mouseleave', () => {
+          productsDropdownContent.style.opacity = '0';
+          productsDropdownContent.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            productsDropdownContent.style.display = 'none';
+          }, 300);
+        });
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manufacturing Excellence - Allen Ralford Barkley</title>
+  
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; script-src 'self' 'unsafe-inline';">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #001D97;
+      --secondary: #000897;
+      --accent: #0A249B;
+      --dark: #00115B;
+      --blue-1: #001369;
+      --blue-2: #070F47;
+      --blue-3: #022593;
+      --blue-4: #0340C6;
+      --blue-5: #010676;
+      --blue-6: #031961;
+      --text-dark: #0D0D0D;
+      --white: #FFFFFF;
+      --silver: #C0C0C0;
+      --azure: #007FFF;
+      --blue-darkest: #001D97;
+      --gradient-1: linear-gradient(135deg, var(--primary), var(--secondary));
+      --gradient-2: linear-gradient(135deg, var(--blue-3), var(--blue-4));
+      --gradient-3: linear-gradient(135deg, var(--dark), var(--blue-1));
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* Navigation Styles */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: transparent;
+    }
+
+    .navbar {
+      background-color: #000000;
+      padding: 15px 0;
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--azure);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 250px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1001;
+      border-radius: 8px;
+      padding: 8px 0;
+      margin-top: 5px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .dropdown-content a {
+      color: var(--blue-darkest);
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+      border-radius: 4px;
+      margin: 0 8px;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f5f9;
+    }
+
+    /* Blue Bar Navigation */
+    .blue-bar {
+      background-color: #0A1A8F;
+      padding: 12px 0;
+    }
+
+    .blue-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .blue-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    .blue-nav a:hover {
+      color: var(--azure);
+    }
+
+    .products-dropdown {
+      position: relative;
+    }
+
+    .products-dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1000;
+      border-radius: 8px;
+      top: 100%;
+      left: 0;
+      padding: 8px 0;
+      margin-top: 5px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Hero Section */
+    .hero {
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #070F47 0%, #05165F 50%, #051765 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 1000px;
+      padding: 0 2rem;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #FFFFFF;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: #FFFFFF;
+      margin-bottom: 0;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* Mercedes-style Content Sections */
+    .mercedes-section {
+      padding: 120px 0;
+      background: var(--white);
+    }
+
+    .mercedes-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .mercedes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .mercedes-grid.reverse {
+      direction: rtl;
+    }
+
+    .mercedes-grid.reverse > * {
+      direction: ltr;
+    }
+
+    .mercedes-content {
+      max-width: 600px;
+    }
+
+    .mercedes-subtitle {
+      font-size: 1rem;
+      color: var(--azure);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .mercedes-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .mercedes-description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+
+    .mercedes-features {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .mercedes-feature {
+      padding: 1.5rem;
+      background: #f8fafc;
+      border-radius: 12px;
+      border-left: 4px solid var(--azure);
+    }
+
+    .mercedes-feature-title {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .mercedes-feature-text {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .mercedes-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .mercedes-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .mercedes-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--primary);
+      color: white;
+      padding: 60px 0 30px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer-text {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--azure);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 2rem;
+      opacity: 0.7;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .mercedes-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .mercedes-title {
+        font-size: 2.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <!-- Black Bar Navigation -->
+    <div class="navbar">
+      <div class="navbar-container">
+        <a href="index.html" class="logo">
+          <img src="assets/logo.jpg" alt="Allen Ralford Barkley Logo">
+          Allen Ralford Barkley
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Industries</a>
+            <div class="dropdown-content">
+              <a href="manufacturing.html">Manufacturing</a>
+              <a href="automotive.html">Automotive</a>
+              <a href="food-beverage.html">Food & Beverage</a>
+              <a href="chemical-process-industries.html">Chemical & Process Industries</a>
+              <a href="consumer-electronics-appliances.html">Consumer Electronics & Appliances</a>
+              <a href="metal-machinery.html">Metal & Machinery</a>
+              <a href="energy-utilities.html">Energy & Utilities</a>
+              <a href="supply-chain-logistics.html">Supply Chain & Logistics</a>
+              <a href="retail-ecommerce.html">Retail & E-commerce</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Solutions</a>
+            <div class="dropdown-content">
+              <a href="manufacturing-excellence.html">Manufacturing Excellence</a>
+              <a href="supply-chain-intelligence.html">Supply Chain Intelligence</a>
+              <a href="digital-operations.html">Digital Operations</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="#" class="nav-link">Services</a>
+            <div class="dropdown-content">
+              <a href="strategy-consulting.html">Strategy & Consulting</a>
+              <a href="implementation-delivery.html">Implementation & Delivery</a>
+              <a href="analytics-intelligence.html">Analytics & Intelligence</a>
+            </div>
+          </div>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blue Bar Navigation -->
+    <div class="blue-bar">
+      <div class="blue-nav">
+        <a href="courses.html">Courses</a>
+        <div class="products-dropdown">
+          <a href="#" class="products-nav-link">Products</a>
+          <div class="products-dropdown-content">
+            <a href="sharpforte.html">SharpForte</a>
+            <a href="dyntello.html">Dyntello</a>
+            <a href="routearchon.html">RouteArchon</a>
+            <a href="schedcortex.html">SchedCortex</a>
+            <a href="manufactron.html">MANUFACTRON</a>
+          </div>
+        </div>
+        <a href="#" onclick="window.open('https://calendly.com/your-link', '_blank')" style="background-color: var(--azure); padding: 10px 20px; border-radius: 4px;">Book Discovery Call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Particle Effect -->
+    <div class="particles">
+      <div class="particle" style="left: 10%; top: 20%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+      <div class="particle" style="left: 20%; top: 80%; width: 6px; height: 6px; animation-delay: 1s;"></div>
+      <div class="particle" style="left: 60%; top: 30%; width: 3px; height: 3px; animation-delay: 2s;"></div>
+      <div class="particle" style="left: 80%; top: 70%; width: 5px; height: 5px; animation-delay: 3s;"></div>
+      <div class="particle" style="left: 30%; top: 50%; width: 4px; height: 4px; animation-delay: 4s;"></div>
+      <div class="particle" style="left: 70%; top: 10%; width: 6px; height: 6px; animation-delay: 5s;"></div>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-title">Manufacturing Excellence</h1>
+      <p class="hero-subtitle">Transforming production through intelligent optimization and data-driven insights</p>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="var(--silver)">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Manufacturing Excellence Introduction -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">Manufacturing Excellence</h2>
+          <h1 class="mercedes-title">Revolutionizing manufacturing through intelligent optimization</h1>
+          <p class="mercedes-description">
+            Allen Ralford Barkley's Manufacturing Excellence solutions transform traditional production environments into intelligent, data-driven operations. Our comprehensive approach combines advanced analytics, process optimization, and predictive insights to deliver unprecedented levels of efficiency, quality, and operational performance across all manufacturing sectors.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Production Optimization</div>
+              <div class="mercedes-feature-text">AI-powered optimization of production schedules, resource allocation, and workflow efficiency</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Quality Intelligence</div>
+              <div class="mercedes-feature-text">Predictive quality control systems that prevent defects before they occur</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Performance Analytics</div>
+              <div class="mercedes-feature-text">Real-time monitoring and analysis of key manufacturing performance indicators</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Solutions/sm1.jpg" alt="Manufacturing Excellence Overview">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Manufacturing Systems -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid reverse">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">Smart Manufacturing</h2>
+          <h1 class="mercedes-title">Intelligent systems that adapt and optimize in real-time</h1>
+          <p class="mercedes-description">
+            Our smart manufacturing solutions leverage IoT sensors, machine learning algorithms, and advanced analytics to create self-optimizing production environments. These systems continuously monitor equipment performance, predict maintenance needs, and automatically adjust parameters to maintain peak efficiency while minimizing downtime and waste.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Predictive Maintenance</div>
+              <div class="mercedes-feature-text">AI-driven maintenance scheduling that prevents equipment failures and reduces costs</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Automated Quality Control</div>
+              <div class="mercedes-feature-text">Computer vision and sensor-based quality inspection systems</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Real-Time Optimization</div>
+              <div class="mercedes-feature-text">Dynamic adjustment of production parameters based on real-time data analysis</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Solutions/sm2.jpg" alt="Smart Manufacturing Systems">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Digital Transformation -->
+  <section class="mercedes-section">
+    <div class="mercedes-container">
+      <div class="mercedes-grid">
+        <div class="mercedes-content">
+          <h2 class="mercedes-subtitle">Digital Transformation</h2>
+          <h1 class="mercedes-title">Complete digitization of manufacturing operations</h1>
+          <p class="mercedes-description">
+            Transform your manufacturing operations with our comprehensive digital transformation solutions. From digital twins and simulation models to integrated ERP systems and cloud-based analytics platforms, we provide the technology infrastructure needed to compete in the modern manufacturing landscape while ensuring seamless integration with existing systems.
+          </p>
+          <div class="mercedes-features">
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Digital Twin Technology</div>
+              <div class="mercedes-feature-text">Virtual replicas of physical systems for simulation and optimization</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Integrated Data Platforms</div>
+              <div class="mercedes-feature-text">Unified data architecture connecting all manufacturing systems</div>
+            </div>
+            <div class="mercedes-feature">
+              <div class="mercedes-feature-title">Cloud-Based Analytics</div>
+              <div class="mercedes-feature-text">Scalable analytics solutions accessible from anywhere, anytime</div>
+            </div>
+          </div>
+        </div>
+        <div class="mercedes-image">
+          <img src="assets/Solutions/sm3.jpg" alt="Digital Manufacturing Transformation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-text">Ready to transform your manufacturing operations with intelligent optimization solutions?</p>
+      <div class="footer-links">
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html">About</a>
+        <a href="#" onclick="window.open('https://calendly.com/your-link', '_blank')">Book Discovery Call</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Allen Ralford Barkley. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdowns = document.querySelectorAll('.dropdown');
+      
+      dropdowns.forEach(dropdown => {
+        const dropdownContent = dropdown.querySelector('.dropdown-content');
+        
+        dropdown.addEventListener('mouseenter', () => {
+          dropdownContent.style.display = 'block';
+          setTimeout(() => {
+            dropdownContent.style.opacity = '1';
+            dropdownContent.style.transform = 'translateY(0)';
+          }, 10);
+        });
+        
+        dropdown.addEventListener('mouseleave', () => {
+          dropdownContent.style.opacity = '0';
+          dropdownContent.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            dropdownContent.style.display = 'none';
+          }, 300);
+        });
+      });
+
+      // Products dropdown functionality
+      const productsDropdown = document.querySelector('.products-dropdown');
+      if (productsDropdown) {
+        const productsDropdownContent = productsDropdown.querySelector('.products-dropdown-content');
+        
+        productsDropdown.addEventListener('mouseenter', () => {
+          productsDropdownContent.style.display = 'block';
+          setTimeout(() => {
+            productsDropdownContent.style.opacity = '1';
+            productsDropdownContent.style.transform = 'translateY(0)';
+          }, 10);
+        });
+        
+        productsDropdown.addEventListener('mouseleave', () => {
+          productsDropdownContent.style.opacity = '0';
+          productsDropdownContent.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            productsDropdownContent.style.display = 'none';
+          }, 300);
+        });
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
