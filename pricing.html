@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Pricing - Allen Ralford Barkley</title>
+  <link rel="stylesheet" href="css/navigation.css">
+  <style>
+    .main-content {
+      margin-top: 80px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1 { color: #001D97; margin-bottom: 30px; text-align: center; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .pricing-card {
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      border-color: #001D97;
+    }
+    .course-title { font-size: 1.5rem; font-weight: 600; color: #001D97; margin-bottom: 15px; }
+    .course-price { font-size: 2.5rem; font-weight: 700; color: #001D97; margin-bottom: 20px; }
+    .course-description { color: #6b7280; margin-bottom: 25px; line-height: 1.6; }
+    .features-list { text-align: left; margin-bottom: 30px; }
+    .features-list li { margin-bottom: 10px; color: #374151; }
+    .btn-primary {
+      background: #001D97;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+    .btn-primary:hover { background: #000B4D; }
+    .guarantee { background: #f0f9ff; padding: 20px; border-radius: 8px; margin-top: 40px; text-align: center; }
+  </style>
+</head>
+<body>
+  <nav class="fixed top-0 left-0 w-full z-40 bg-black py-3">
+    <div class="navbar-container">
+      <a href="index.html" class="logo">Allen Ralford Barkley</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="courses-paddle.html" class="nav-link">Courses</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <h1>Professional Course Pricing</h1>
+    <p style="text-align: center; color: #6b7280; font-size: 1.1rem; margin-bottom: 40px;">
+      Master business optimization and operational excellence with expert-led courses
+    </p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="course-title">Business Process Optimization</h3>
+        <div class="course-price">$199</div>
+        <p class="course-description">
+          Learn advanced techniques to streamline operations and maximize efficiency in your organization.
+        </p>
+        <ul class="features-list">
+          <li>✓ 6+ hours of video content</li>
+          <li>✓ Downloadable templates and tools</li>
+          <li>✓ Case studies and real examples</li>
+          <li>✓ Lifetime access</li>
+          <li>✓ Certificate of completion</li>
+        </ul>
+        <a href="courses-paddle.html" class="btn-primary">Enroll Now</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3 class="course-title">Operational Excellence Mastery</h3>
+        <div class="course-price">$299</div>
+        <p class="course-description">
+          Comprehensive training on implementing world-class operational excellence frameworks.
+        </p>
+        <ul class="features-list">
+          <li>✓ 8+ hours of premium content</li>
+          <li>✓ Interactive worksheets</li>
+          <li>✓ Industry best practices</li>
+          <li>✓ Lifetime access</li>
+          <li>✓ Expert Q&A sessions</li>
+        </ul>
+        <a href="courses-paddle.html" class="btn-primary">Enroll Now</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3 class="course-title">Strategic Business Consulting</h3>
+        <div class="course-price">$499</div>
+        <p class="course-description">
+          Advanced course covering strategic consulting methodologies and client engagement best practices.
+        </p>
+        <ul class="features-list">
+          <li>✓ 10+ hours of expert content</li>
+          <li>✓ Consulting frameworks</li>
+          <li>✓ Client presentation templates</li>
+          <li>✓ Lifetime access</li>
+          <li>✓ 1-on-1 consultation session</li>
+        </ul>
+        <a href="courses-paddle.html" class="btn-primary">Enroll Now</a>
+      </div>
+    </div>
+
+    <div class="guarantee">
+      <h3 style="color: #001D97; margin-bottom: 15px;">30-Day Money-Back Guarantee</h3>
+      <p style="color: #6b7280;">
+        Not satisfied with your course? Get a full refund within 30 days, no questions asked.
+        <a href="refund.html" style="color: #001D97;">Learn more about our refund policy</a>
+      </p>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding: 30px; background: #f9fafb; border-radius: 12px;">
+      <h3 style="color: #001D97; margin-bottom: 15px;">What's Included in Every Course</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+        <div>
+          <strong>Lifetime Access</strong><br>
+          <span style="color: #6b7280;">Learn at your own pace</span>
+        </div>
+        <div>
+          <strong>Mobile Friendly</strong><br>
+          <span style="color: #6b7280;">Study anywhere, anytime</span>
+        </div>
+        <div>
+          <strong>Downloadable Resources</strong><br>
+          <span style="color: #6b7280;">Templates and tools included</span>
+        </div>
+        <div>
+          <strong>Expert Support</strong><br>
+          <span style="color: #6b7280;">Get help when you need it</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
